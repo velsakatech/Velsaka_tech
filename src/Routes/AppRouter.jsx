@@ -15,7 +15,9 @@ import Products from "../Pages/ProductsPage";
 //import Careers from "../Pages/CareersPage"; // ✅ FIXED
 import NotFound from "../Pages/NotFound";
 import UnderDevelopment from "../Pages/UnderDevelopment";
-
+import CookiesPolicy from "../Pages/CookiesPolicy";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
+import TermsPage from "../Pages/Terms&ConditionsPage";
 /* =========================
    ADMIN PAGES
 ========================= */
@@ -30,6 +32,9 @@ const AppRouter = () => {
             PUBLIC ROUTES
         ========================= */}
         <Route path="/" element={<Home />} />
+        <Route path="/cookies" element={<CookiesPolicy />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/services" element={<Services />} />
