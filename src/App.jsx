@@ -1,10 +1,16 @@
 // src/App.jsx
-// Test Commit
+
 import React from "react";
 import AppRouter from "./Routes/AppRouter";
+import CookieBanner from "./components/CookieBanner";
 
 function App() {
-  return <AppRouter />;
+  return (
+    <>
+      <AppRouter />
+      <CookieBanner />
+    </>
+  );
 }
 
 export default App;
