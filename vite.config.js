@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import babel from "@rolldown/plugin-babel";
-import sitemap from "vite-plugin-sitemap";
 
 export default defineConfig(({ mode }) => {
   // ✅ Load env safely
@@ -13,12 +12,6 @@ export default defineConfig(({ mode }) => {
 
       babel({
         presets: [reactCompilerPreset()],
-      }),
-
-      // ✅ Sitemap plugin
-      sitemap({
-        hostname: "https://velsaka-tech.vercel.app",
-        dynamicRoutes: ["/"],
       }),
     ],
 
