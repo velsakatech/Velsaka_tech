@@ -4,7 +4,8 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 // API Configuration - Using Vite environment variables
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://your-api-domain.com';
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "https://your-api-domain.com";
 const WAITLIST_ENDPOINT = `${API_BASE_URL}/api/waitlist`;
 
 // Utility functions
@@ -19,32 +20,32 @@ const validateEmail = (email) => {
 // Retry logic with exponential backoff
 const fetchWithRetry = async (url, options, maxRetries = 3) => {
   let lastError;
-  
+
   for (let i = 0; i < maxRetries; i++) {
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
-      
+
       const response = await fetch(url, {
         ...options,
-        signal: controller.signal
+        signal: controller.signal,
       });
-      
+
       clearTimeout(timeoutId);
-      
+
       if (response.ok || response.status !== 429) {
         return response;
       }
-      
+
       // Rate limited - wait with exponential backoff
       const delay = Math.pow(2, i) * 1000;
-      await new Promise(resolve => setTimeout(resolve, delay));
+      await new Promise((resolve) => setTimeout(resolve, delay));
     } catch (error) {
       lastError = error;
       if (i === maxRetries - 1) throw lastError;
-      
+
       const delay = Math.pow(2, i) * 1000;
-      await new Promise(resolve => setTimeout(resolve, delay));
+      await new Promise((resolve) => setTimeout(resolve, delay));
     }
   }
   throw lastError;
@@ -56,13 +57,13 @@ class RateLimiter {
     this.lastRequestTime = 0;
     this.minInterval = minInterval;
   }
-  
+
   async throttle() {
     const now = Date.now();
     const timeSinceLastRequest = now - this.lastRequestTime;
     if (timeSinceLastRequest < this.minInterval) {
-      await new Promise(resolve => 
-        setTimeout(resolve, this.minInterval - timeSinceLastRequest)
+      await new Promise((resolve) =>
+        setTimeout(resolve, this.minInterval - timeSinceLastRequest),
       );
     }
     this.lastRequestTime = Date.now();
@@ -139,7 +140,7 @@ const ProductsPage = () => {
     }
 
     setIsSubmitting(true);
-    
+
     // Apply rate limiting
     await rateLimiter.throttle();
 
@@ -152,18 +153,18 @@ const ProductsPage = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           email: trimmedEmail,
           timestamp: new Date().toISOString(),
-          source: window.location.origin
+          source: window.location.origin,
         }),
-        signal: abortController.signal
+        signal: abortController.signal,
       };
 
       const res = await fetchWithRetry(WAITLIST_ENDPOINT, requestOptions);
-      
+
       let responseData = {};
       try {
         responseData = await res.json();
@@ -176,25 +177,31 @@ const ProductsPage = () => {
 
       if (!res.ok) {
         let errorMessage = "Something went wrong. Please try again.";
-        
+
         switch (res.status) {
           case 400:
-            errorMessage = responseData.message || "Invalid request. Please check your email.";
+            errorMessage =
+              responseData.message ||
+              "Invalid request. Please check your email.";
             break;
           case 409:
             errorMessage = "This email is already on our waitlist!";
             break;
           case 429:
-            errorMessage = "Too many requests. Please try again in a few minutes.";
+            errorMessage =
+              "Too many requests. Please try again in a few minutes.";
             break;
           case 500:
             errorMessage = "Server error. Our team has been notified.";
-            console.error("Server error:", { status: res.status, email: trimmedEmail });
+            console.error("Server error:", {
+              status: res.status,
+              email: trimmedEmail,
+            });
             break;
           default:
             errorMessage = responseData.message || `Error: ${res.status}`;
         }
-        
+
         throw new Error(errorMessage);
       }
 
@@ -204,28 +211,35 @@ const ProductsPage = () => {
       setEmailError("");
 
       setTimeout(() => setNotified(false), 3000);
-      
+
       // Store in localStorage to prevent duplicate notifications
       try {
-        const notifiedEmails = JSON.parse(localStorage.getItem('notified_emails') || '[]');
+        const notifiedEmails = JSON.parse(
+          localStorage.getItem("notified_emails") || "[]",
+        );
         if (!notifiedEmails.includes(trimmedEmail)) {
           notifiedEmails.push(trimmedEmail);
-          localStorage.setItem('notified_emails', JSON.stringify(notifiedEmails));
+          localStorage.setItem(
+            "notified_emails",
+            JSON.stringify(notifiedEmails),
+          );
         }
       } catch (e) {
         // Silently fail localStorage
       }
-      
     } catch (error) {
       // Handle different error types
-      if (error.name === 'AbortError') {
+      if (error.name === "AbortError") {
         console.log("Request aborted");
         return;
       }
-      
+
       let userMessage = "Something went wrong. Please try again.";
-      
-      if (error.message.includes("fetch") || error.message.includes("network")) {
+
+      if (
+        error.message.includes("fetch") ||
+        error.message.includes("network")
+      ) {
         userMessage = "Network error. Please check your connection.";
       } else if (error.message.includes("timeout")) {
         userMessage = "Request timed out. Please try again.";
@@ -234,15 +248,15 @@ const ProductsPage = () => {
       } else {
         userMessage = error.message || userMessage;
       }
-      
+
       setEmailError(userMessage);
-      
+
       // Log to monitoring service in production
       if (import.meta.env.PROD) {
         console.error("Waitlist API Error:", {
           message: error.message,
           email: trimmedEmail,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
       }
     } finally {
@@ -267,11 +281,11 @@ const ProductsPage = () => {
     {
       icon: "folder_copy",
       name: "Portfolio Generator",
-      description: "Convert your resume into a modern developer portfolio.",
+      description: "Build your professional portfolio in minutes.",
       badge: "Under Development",
       badgeColor: "indigo",
       fullDescription:
-        "Transform your resume into a stunning developer portfolio website in minutes. No coding required. Features include:",
+        "Build your professional portfolio with modern templates, seamless customization, and one-click publishing — fast and simple",
       features: [
         "Automatic resume parsing",
         "Multiple modern templates",

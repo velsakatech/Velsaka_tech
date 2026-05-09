@@ -296,34 +296,7 @@ export default function UnderDevelopment() {
 
       </div>
 
-      {/* Bottom Fixed Bar */}
-      <motion.div 
-        initial={{ y: 100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", delay: 0.5 }}
-        className="fixed bottom-0 left-0 right-0 bg-black/40 backdrop-blur-md border-t border-white/10 py-2"
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-3 text-xs text-slate-400">
-            <div className="flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-              <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse delay-150"></span>
-              <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse delay-300"></span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Construction size={12} />
-              <span>VELSAKA Tech — Under Development • Coming Soon • Stay Tuned</span>
-              <Cpu size={12} />
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse"></span>
-              <span className="inline-block w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse delay-150"></span>
-              <span className="inline-block w-1.5 h-1.5 bg-violet-500 rounded-full animate-pulse delay-300"></span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
+    
       <style jsx>{`
         @keyframes spin {
           from {
