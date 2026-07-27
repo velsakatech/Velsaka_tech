@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 /* ------------------------------
-   Base Theme (VELSAKA Dark UI)
+   Base Theme (Light Gray)
 ------------------------------ */
 body {
-  @apply bg-[#0B1120] text-[#e4e1ee] font-body;
+  @apply bg-[#f3f4f6] text-[#1a1325] font-body;
   overflow-x: hidden;
   width: 100%;
   position: relative;
@@ -24,18 +24,19 @@ body {
 }
 
 /* ------------------------------
-   Glass UI (Reusable) - Enhanced responsive
+   Glass UI – Light Gray version
 ------------------------------ */
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 640px) {
   .glass-card {
     backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -43,46 +44,46 @@ body {
    Gradient Styles
 ------------------------------ */
 .primary-gradient {
-  background: linear-gradient(135deg, #6C63FF 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #c4c0ff 0%, #adc6ff 100%);
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ------------------------------
-   Glow Effects
+   Glow Effects (subtle)
 ------------------------------ */
 .glow-border {
   transition: all 0.3s ease;
 }
 
 .glow-border:hover {
-  box-shadow: 0 0 20px rgba(108, 99, 255, 0.2);
-  border-color: rgba(108, 99, 255, 0.4);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.3);
 }
 
 /* ------------------------------
-   Scrollbar (Modern UI)
+   Scrollbar
 ------------------------------ */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #13121b;
+  background: #e5e7eb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #6C63FF, #3B82F6);
+  background: linear-gradient(135deg, #818cf8, #6366f1);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #7B73FF, #4B92F6);
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
 }
 
 /* ------------------------------
@@ -93,14 +94,14 @@ html {
 }
 
 /* ------------------------------
-   Animations
+   Animations (subtle)
 ------------------------------ */
 @keyframes pulse-slow {
   0%, 100% {
     opacity: 0.3;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }
 
@@ -349,9 +350,9 @@ html {
   }
 }
 
-
-/* Add to your global CSS for smooth menu animations */
-
+/* ------------------------------
+   Menu Animations
+------------------------------ */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -380,20 +381,18 @@ html {
 
 /* Mobile menu improvements */
 @media (max-width: 768px) {
-  /* Better touch targets */
   .mobile-nav-link {
     min-height: 48px;
     display: flex;
     align-items: center;
   }
   
-  /* Prevent body scroll when menu is open */
   body.menu-open {
     overflow: hidden;
   }
 }
 
-/* Desktop nav hover effects */
+/* Desktop nav hover effects – light gray theme */
 @media (min-width: 768px) {
   nav a {
     position: relative;
@@ -407,7 +406,7 @@ html {
     transform: translateX(-50%);
     width: 0%;
     height: 2px;
-    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    background: linear-gradient(90deg, #818cf8, #6366f1);
     transition: width 0.3s ease;
   }
   

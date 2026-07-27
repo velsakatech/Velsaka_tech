@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import Logo from "../assets/VelSAKA_Logo.jpeg";
 
 const PricingPage = () => {
   const navigate = useNavigate();
@@ -27,130 +28,155 @@ const PricingPage = () => {
   ];
 
   return (
-    <div className="bg-background min-h-screen font-body-md">
+    <div className="min-h-screen bg-[#f3f4f6]">
       <Header />
 
-      <main className="pt-xxl overflow-x-hidden">
-        {/* Hero Section */}
-        <section className="relative py-12 md:py-xxl px-6 md:px-8 max-w-7xl mx-auto text-center">
-          <div className="absolute inset-0 -z-10 pointer-events-none">
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full md:w-[800px] h-[400px] bg-primary/10 rounded-full blur-[80px] md:blur-[120px]"></div>
+      <main>
+        {/* Hero Section with Big Logo */}
+        <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32 px-4 sm:px-6">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-200/30 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-200/30 rounded-full blur-[120px]" />
           </div>
-          <h1 className="font-h1 text-3xl md:text-h1 text-white mb-md tracking-tight leading-tight font-['Space_Grotesk']">
-            Simple & Transparent Pricing
-          </h1>
-          <p className="font-body-lg text-body-md md:text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-xl">
-            Affordable plans for startups, businesses, and creators. Scale your cosmic vision with precision engineering.
-          </p>
+
+          <div className="relative z-10 max-w-[1440px] mx-auto text-center">
+            {/* Rounded Logo */}
+            <div className="flex justify-center mb-8">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden">
+                <img
+                  src={Logo}
+                  alt="VELSAKA TECH Logo"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <span className="text-xs sm:text-sm tracking-widest text-indigo-600 mb-3 sm:mb-4 block font-semibold">
+              PRICING
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 sm:mb-6 font-['Space_Grotesk']">
+              Simple & Transparent Pricing
+            </h1>
+            <p className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto px-4">
+              Affordable plans for startups, businesses, and creators. Scale your cosmic vision with precision engineering.
+            </p>
+          </div>
         </section>
 
-        {/* Pricing Cards Section */}
-        <section className="px-6 md:px-8 py-xl max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-lg items-stretch">
+        {/* Pricing Cards */}
+        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {/* Basic Plan */}
-            <div className="bg-white/5 backdrop-blur-[20px] border border-white/10 p-xl rounded-xl flex flex-col hover:-translate-y-2 transition-all duration-300">
-              <div className="mb-lg">
-                <span className="text-primary font-label-sm uppercase tracking-widest text-xs font-semibold">Basic</span>
-                <h2 className="font-h2 text-h2 text-white mt-xs font-['Space_Grotesk'] text-3xl md:text-4xl">
-                  ₹3,999<span className="text-lg text-on-surface-variant">/mo</span>
+            <div className="glass-card p-6 lg:p-8 rounded-xl hover:shadow-[0_0_25px_rgba(99,102,241,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col border border-gray-200 bg-white/80 backdrop-blur-sm">
+              <div className="mb-6">
+                <span className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">Basic</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2 font-['Space_Grotesk']">
+                  ₹4,999<span className="text-lg font-normal text-gray-500">/mo</span>
                 </h2>
               </div>
-              <ul className="space-y-md mb-xxl flex-grow">
-                <li className="flex items-center gap-3 text-on-surface-variant">
-                  <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+
+              <ul className="space-y-3 mb-8 flex-grow">
+                <li className="flex items-center gap-3 text-gray-600">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
                   Standard Performance
                 </li>
-                <li className="flex items-center gap-3 text-on-surface-variant">
-                  <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                <li className="flex items-center gap-3 text-gray-600">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
                   5 Project Capacity
                 </li>
-                <li className="flex items-center gap-3 text-on-surface-variant">
-                  <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                <li className="flex items-center gap-3 text-gray-600">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
                   Email Support
                 </li>
-                <li className="flex items-center gap-3 text-on-surface-variant opacity-50">
-                  <span className="material-symbols-outlined text-[20px]">cancel</span>
+                <li className="flex items-center gap-3 text-gray-400 opacity-60">
+                  <span className="material-symbols-outlined text-xl">cancel</span>
                   Custom Domains
                 </li>
               </ul>
-              <button 
+
+              <button
                 onClick={() => navigate("/contact")}
-                className="w-full py-md border border-white/20 rounded-xl font-label-sm hover:bg-white/5 transition-all text-sm font-semibold"
+                className="w-full py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-white/80 hover:border-indigo-300 transition-all duration-300 font-medium"
               >
                 Get Started
               </button>
             </div>
 
             {/* Pro Plan (Most Popular) */}
-            <div className="bg-white/5 backdrop-blur-[20px] border border-primary/40 p-xl rounded-xl flex flex-col md:scale-105 z-10 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden shadow-[0_0_35px_rgba(108,99,255,0.3)]">
-              <div className="absolute top-0 right-0 bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-6 py-1 rounded-bl-xl text-xs font-semibold shadow-md shadow-indigo-500/30">
-  Most Popular
-</div>
-              <div className="mb-lg">
-                <span className="text-primary font-label-sm uppercase tracking-widest text-xs font-semibold">Pro</span>
-                <h2 className="font-h2 text-h2 text-white mt-xs font-['Space_Grotesk'] text-3xl md:text-4xl">
-                  ₹9,999<span className="text-lg text-on-surface-variant">/mo</span>
+            <div className="glass-card p-6 lg:p-8 rounded-xl hover:shadow-[0_0_25px_rgba(99,102,241,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col border-2 border-indigo-400 bg-white/80 backdrop-blur-sm relative md:scale-105 z-10">
+              <div className="absolute top-0 right-0 bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-4 py-1 rounded-bl-xl text-xs font-semibold shadow-md shadow-indigo-500/30">
+                Most Popular
+              </div>
+
+              <div className="mb-6">
+                <span className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">Pro</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2 font-['Space_Grotesk']">
+                  ₹9,999<span className="text-lg font-normal text-gray-500">/mo</span>
                 </h2>
               </div>
-              <ul className="space-y-md mb-xxl flex-grow">
-                <li className="flex items-center gap-3 text-on-surface">
-                  <span className="material-symbols-outlined text-primary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+
+              <ul className="space-y-3 mb-8 flex-grow">
+                <li className="flex items-center gap-3 text-gray-700">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                   Enhanced Throughput
                 </li>
-                <li className="flex items-center gap-3 text-on-surface">
-                  <span className="material-symbols-outlined text-primary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                   20 Project Capacity
                 </li>
-                <li className="flex items-center gap-3 text-on-surface">
-                  <span className="material-symbols-outlined text-primary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                   Priority Support (24h)
                 </li>
-                <li className="flex items-center gap-3 text-on-surface">
-                  <span className="material-symbols-outlined text-primary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                   Custom Domains
                 </li>
-                <li className="flex items-center gap-3 text-on-surface">
-                  <span className="material-symbols-outlined text-primary text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                   Advanced Analytics
                 </li>
               </ul>
-              <button 
+
+              <button
                 onClick={() => navigate("/contact")}
-                className="w-full py-md bg-gradient-to-r from-[#6C63FF] to-[#0566d9] text-white rounded-xl font-label-sm shadow-[0_0_20px_rgba(108,99,255,0.4)] hover:opacity-90 transition-all text-sm font-semibold"
+                className="w-full py-2.5 bg-gradient-to-r from-[#6C63FF] to-[#3B82F6] text-white rounded-lg font-semibold hover:shadow-[0_0_25px_rgba(108,63,255,0.4)] transition-all duration-300"
               >
                 Go Pro
               </button>
             </div>
 
             {/* Premium Plan */}
-            <div className="bg-white/5 backdrop-blur-[20px] border border-white/10 p-xl rounded-xl flex flex-col hover:-translate-y-2 transition-all duration-300">
-              <div className="mb-lg">
-                <span className="text-primary font-label-sm uppercase tracking-widest text-xs font-semibold">Premium</span>
-                <h2 className="font-h2 text-h2 text-white mt-xs font-['Space_Grotesk'] text-3xl md:text-4xl">
-                  ₹29,999+<span className="text-lg text-on-surface-variant">/mo</span>
+            <div className="glass-card p-6 lg:p-8 rounded-xl hover:shadow-[0_0_25px_rgba(99,102,241,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col border border-gray-200 bg-white/80 backdrop-blur-sm">
+              <div className="mb-6">
+                <span className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">Premium</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2 font-['Space_Grotesk']">
+                  ₹29,999+<span className="text-lg font-normal text-gray-500">/mo</span>
                 </h2>
               </div>
-              <ul className="space-y-md mb-xxl flex-grow">
-                <li className="flex items-center gap-3 text-on-surface-variant">
-                  <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+
+              <ul className="space-y-3 mb-8 flex-grow">
+                <li className="flex items-center gap-3 text-gray-600">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
                   Unlimited Scale
                 </li>
-                <li className="flex items-center gap-3 text-on-surface-variant">
-                  <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                <li className="flex items-center gap-3 text-gray-600">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
                   Dedicated Infrastructure
                 </li>
-                <li className="flex items-center gap-3 text-on-surface-variant">
-                  <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                <li className="flex items-center gap-3 text-gray-600">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
                   White-glove Onboarding
                 </li>
-                <li className="flex items-center gap-3 text-on-surface-variant">
-                  <span className="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+                <li className="flex items-center gap-3 text-gray-600">
+                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
                   SSO & Enterprise Security
                 </li>
               </ul>
-              <button 
+
+              <button
                 onClick={() => navigate("/contact")}
-                className="w-full py-md border border-white/20 rounded-xl font-label-sm hover:bg-white/5 transition-all text-sm font-semibold"
+                className="w-full py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-white/80 hover:border-indigo-300 transition-all duration-300 font-medium"
               >
                 Contact Enterprise
               </button>
@@ -159,82 +185,82 @@ const PricingPage = () => {
         </section>
 
         {/* Add-ons Section */}
-        <section className="px-6 md:px-8 py-xxl max-w-7xl mx-auto">
-          <h3 className="font-h3 text-h3 text-white mb-xl text-center font-['Space_Grotesk'] text-2xl font-semibold">
+        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-10 text-center font-['Space_Grotesk']">
             Enhance Your Experience
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: "trending_up", title: "SEO Optimization", desc: "Boost your organic cosmic reach." },
               { icon: "build", title: "Maintenance", desc: "24/7 system health checks." },
               { icon: "cloud_done", title: "Hosting Setup", desc: "Zero-latency global deployment." },
               { icon: "brush", title: "UI Redesign", desc: "Next-gen aesthetic overhaul." },
             ].map((addon, idx) => (
-              <div key={idx} className="bg-white/5 backdrop-blur-[20px] border border-white/10 p-lg rounded-xl hover:bg-white/5 transition-all cursor-pointer group">
-                <span className="material-symbols-outlined text-primary mb-md text-2xl">{addon.icon}</span>
-                <h4 className="font-bold text-white mb-xs text-base">{addon.title}</h4>
-                <p className="text-sm text-slate-400">{addon.desc}</p>
+              <div key={idx} className="glass-card p-6 rounded-xl border border-gray-200 bg-white/80 backdrop-blur-sm hover:shadow-[0_0_20px_rgba(99,102,241,0.1)] transition-all duration-300">
+                <span className="material-symbols-outlined text-indigo-500 text-3xl mb-3">{addon.icon}</span>
+                <h4 className="text-lg font-bold text-gray-800 mb-1">{addon.title}</h4>
+                <p className="text-gray-600 text-sm">{addon.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Comparison Table */}
-        <section className="px-6 md:px-8 py-xxl max-w-7xl mx-auto">
-          <h3 className="font-h3 text-h3 text-white mb-xl font-['Space_Grotesk'] text-2xl font-semibold">
+        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-10 font-['Space_Grotesk']">
             Feature Comparison
           </h3>
-          <div className="bg-white/5 backdrop-blur-[20px] border border-white/10 rounded-xl overflow-hidden overflow-x-auto custom-scrollbar">
+          <div className="glass-card rounded-xl overflow-hidden border border-gray-200 bg-white/80 backdrop-blur-sm overflow-x-auto">
             <table className="w-full text-left min-w-[640px]">
               <thead>
-                <tr className="border-b border-white/10 bg-white/5">
-                  <th className="p-lg font-h3 text-primary font-semibold">Feature</th>
-                  <th className="p-lg text-white">Basic</th>
-                  <th className="p-lg text-white">Pro</th>
-                  <th className="p-lg text-white">Premium</th>
+                <tr className="border-b border-gray-200 bg-gray-50/80">
+                  <th className="p-4 lg:p-6 font-semibold text-indigo-600">Feature</th>
+                  <th className="p-4 lg:p-6 font-semibold text-gray-800">Basic</th>
+                  <th className="p-4 lg:p-6 font-semibold text-gray-800">Pro</th>
+                  <th className="p-4 lg:p-6 font-semibold text-gray-800">Premium</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-gray-100">
                 <tr>
-                  <td className="p-lg text-on-surface">API Requests / Day</td>
-                  <td className="p-lg text-slate-400">10k</td>
-                  <td className="p-lg text-white font-medium">100k</td>
-                  <td className="p-lg text-primary font-bold">Unlimited</td>
+                  <td className="p-4 lg:p-6 text-gray-700">API Requests / Day</td>
+                  <td className="p-4 lg:p-6 text-gray-500">10k</td>
+                  <td className="p-4 lg:p-6 text-gray-800 font-medium">100k</td>
+                  <td className="p-4 lg:p-6 text-indigo-600 font-bold">Unlimited</td>
                 </tr>
                 <tr>
-                  <td className="p-lg text-on-surface">Storage Capacity</td>
-                  <td className="p-lg text-slate-400">5GB</td>
-                  <td className="p-lg text-white font-medium">50GB</td>
-                  <td className="p-lg text-primary font-bold">1TB+</td>
+                  <td className="p-4 lg:p-6 text-gray-700">Storage Capacity</td>
+                  <td className="p-4 lg:p-6 text-gray-500">5GB</td>
+                  <td className="p-4 lg:p-6 text-gray-800 font-medium">50GB</td>
+                  <td className="p-4 lg:p-6 text-indigo-600 font-bold">1TB+</td>
                 </tr>
                 <tr>
-                  <td className="p-lg text-on-surface">Collaborators</td>
-                  <td className="p-lg text-slate-400">2</td>
-                  <td className="p-lg text-white font-medium">10</td>
-                  <td className="p-lg text-primary font-bold">Unlimited</td>
+                  <td className="p-4 lg:p-6 text-gray-700">Collaborators</td>
+                  <td className="p-4 lg:p-6 text-gray-500">2</td>
+                  <td className="p-4 lg:p-6 text-gray-800 font-medium">10</td>
+                  <td className="p-4 lg:p-6 text-indigo-600 font-bold">Unlimited</td>
                 </tr>
                 <tr>
-                  <td className="p-lg text-on-surface">Custom Reports</td>
-                  <td className="p-lg text-slate-400">
-                    <span className="material-symbols-outlined opacity-30 text-base">close</span>
+                  <td className="p-4 lg:p-6 text-gray-700">Custom Reports</td>
+                  <td className="p-4 lg:p-6 text-gray-400">
+                    <span className="material-symbols-outlined text-xl opacity-50">close</span>
                   </td>
-                  <td className="p-lg text-primary">
-                    <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
+                  <td className="p-4 lg:p-6 text-indigo-500">
+                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
                   </td>
-                  <td className="p-lg text-primary">
-                    <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
+                  <td className="p-4 lg:p-6 text-indigo-500">
+                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-lg text-on-surface">Dedicated IP</td>
-                  <td className="p-lg text-slate-400">
-                    <span className="material-symbols-outlined opacity-30 text-base">close</span>
+                  <td className="p-4 lg:p-6 text-gray-700">Dedicated IP</td>
+                  <td className="p-4 lg:p-6 text-gray-400">
+                    <span className="material-symbols-outlined text-xl opacity-50">close</span>
                   </td>
-                  <td className="p-lg text-slate-400">
-                    <span className="material-symbols-outlined opacity-30 text-base">close</span>
+                  <td className="p-4 lg:p-6 text-gray-400">
+                    <span className="material-symbols-outlined text-xl opacity-50">close</span>
                   </td>
-                  <td className="p-lg text-primary">
-                    <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
+                  <td className="p-4 lg:p-6 text-indigo-500">
+                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
                   </td>
                 </tr>
               </tbody>
@@ -243,25 +269,25 @@ const PricingPage = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="px-6 md:px-8 py-xxl max-w-3xl mx-auto">
-          <h3 className="font-h3 text-h3 text-white mb-xl text-center font-['Space_Grotesk'] text-2xl font-semibold">
+        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-3xl mx-auto">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-10 text-center font-['Space_Grotesk']">
             Frequently Asked Questions
           </h3>
-          <div className="space-y-md">
+          <div className="space-y-4">
             {faqs.map((faq, idx) => (
-              <details 
+              <details
                 key={idx}
-                className="group bg-white/5 backdrop-blur-[20px] border border-white/10 rounded-xl overflow-hidden"
+                className="glass-card rounded-xl border border-gray-200 bg-white/80 backdrop-blur-sm overflow-hidden"
                 open={idx === openFaq}
                 onClick={() => setOpenFaq(idx === openFaq ? -1 : idx)}
               >
-                <summary className="flex justify-between items-center p-lg cursor-pointer list-none">
-                  <span className="font-medium text-white">{faq.question}</span>
-                  <span className="material-symbols-outlined transition-transform group-open:rotate-180">
+                <summary className="flex justify-between items-center p-4 lg:p-6 cursor-pointer list-none">
+                  <span className="font-medium text-gray-800">{faq.question}</span>
+                  <span className="material-symbols-outlined text-gray-500 transition-transform group-open:rotate-180">
                     expand_more
                   </span>
                 </summary>
-                <div className="px-lg pb-lg text-slate-400 text-sm md:text-base">
+                <div className="px-4 lg:px-6 pb-4 lg:pb-6 text-gray-600 text-sm md:text-base">
                   {faq.answer}
                 </div>
               </details>
@@ -270,21 +296,23 @@ const PricingPage = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="px-6 md:px-8 py-xxl text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-primary/5 -z-10"></div>
-          <div className="max-w-7xl mx-auto py-xl">
-            <h3 className="font-h2 text-2xl md:text-h2 text-white mb-md font-['Space_Grotesk'] font-semibold">
+        <section className="relative overflow-hidden py-16 sm:py-24 px-4 sm:px-6">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-indigo-200/30 rounded-full blur-[120px]" />
+          </div>
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 font-['Space_Grotesk']">
               Not sure which plan fits your project?
             </h3>
-            <p className="text-on-surface-variant mb-xl max-w-xl mx-auto text-sm md:text-base">
+            <p className="text-gray-600 mb-8 text-base sm:text-lg max-w-xl mx-auto">
               Our consultants are ready to help you map out the perfect infrastructure for your unique cosmic scale needs.
             </p>
-            <button 
+            <button
               onClick={() => navigate("/contact")}
-              className="bg-white text-[#0B1120] px-8 md:px-xl py-4 md:py-lg rounded-xl font-bold hover:bg-primary hover:text-white transition-colors flex items-center gap-2 mx-auto"
+              className="bg-gradient-to-r from-[#6C63FF] to-[#3B82F6] text-white px-8 sm:px-10 py-3 rounded-full font-semibold hover:shadow-[0_0_30px_rgba(108,63,255,0.4)] transition-all duration-300 active:scale-95 inline-flex items-center gap-2"
             >
               Contact Us
-              <span className="material-symbols-outlined">arrow_forward</span>
+              <span className="material-symbols-outlined text-xl">arrow_forward</span>
             </button>
           </div>
         </section>

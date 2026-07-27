@@ -19,11 +19,11 @@ const CoreFeatures = () => {
   ];
 
   return (
-    <section className="px-3 sm:px-4 md:px-6 lg:px-8 max-w-[1440px] mx-auto py-8 sm:py-10 md:py-12 lg:py-16 bg-slate-900/20 rounded-xl">
+    <section className="px-3 sm:px-4 md:px-6 lg:px-8 max-w-[1440px] mx-auto py-8 sm:py-10 md:py-12 lg:py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
         {/* Left Column - Core Site Features */}
         <div className="space-y-6 sm:space-y-7 md:space-y-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-['Space_Grotesk'] text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 font-['Space_Grotesk'] text-center md:text-left">
             Core Site Features
           </h2>
           <div className="space-y-4 sm:space-y-5 md:space-y-6">
@@ -33,10 +33,10 @@ const CoreFeatures = () => {
                   {feature.num}
                 </span>
                 <div>
-                  <h4 className="font-bold text-white text-lg sm:text-xl group-hover:text-indigo-300 transition-colors duration-300">
+                  <h4 className="font-bold text-gray-800 text-lg sm:text-xl group-hover:text-indigo-600 transition-colors duration-300">
                     {feature.title}
                   </h4>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-1">
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mt-1">
                     {feature.desc}
                   </p>
                 </div>
@@ -47,19 +47,19 @@ const CoreFeatures = () => {
 
         {/* Right Column - Technical Excellence */}
         <div className="space-y-6 sm:space-y-7 md:space-y-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-['Space_Grotesk'] text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 font-['Space_Grotesk'] text-center md:text-left">
             Technical Excellence
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {techs.map((tech, index) => (
-              <div key={index} className="glass-card p-3 sm:p-4 rounded-lg flex items-center gap-2 sm:gap-3 hover:scale-105 transition-all duration-300 cursor-pointer group border border-white/10 hover:border-indigo-500/40 hover:shadow-[0_0_20px_rgba(108,99,255,0.2)]">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center bg-indigo-500/10 rounded-lg border border-indigo-500/20 group-hover:bg-indigo-500/20 group-hover:border-indigo-500/40 transition-all duration-300">
+              <div key={index} className="glass-card p-3 sm:p-4 rounded-lg flex items-center gap-2 sm:gap-3 hover:scale-105 transition-all duration-300 cursor-pointer group border border-gray-200 hover:border-indigo-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.12)]">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center bg-indigo-100/50 rounded-lg border border-indigo-200 group-hover:bg-indigo-200/70 group-hover:border-indigo-300 transition-all duration-300">
                   <tech.Icon 
-                    className="text-indigo-400 group-hover:scale-110 transition-transform duration-300"
+                    className="text-indigo-600 group-hover:scale-110 group-hover:text-indigo-700 transition-transform duration-300"
                     style={{ fontSize: '18px' }}
                   />
                 </div>
-                <span className="font-bold text-xs sm:text-sm text-white group-hover:text-indigo-300 transition-colors duration-300">
+                <span className="font-bold text-xs sm:text-sm text-gray-700 group-hover:text-indigo-600 transition-colors duration-300">
                   {tech.label}
                 </span>
               </div>

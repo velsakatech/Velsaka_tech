@@ -36,7 +36,7 @@ const Roadmap = () => {
 
   return (
     <section className="px-3 sm:px-4 md:px-6 lg:px-8 max-w-[1440px] mx-auto py-8 sm:py-10 md:py-12 lg:py-16 overflow-x-hidden">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-7 md:mb-8 font-['Space_Grotesk'] text-center sm:text-left">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 sm:mb-7 md:mb-8 font-['Space_Grotesk'] text-center sm:text-left">
         Product Roadmap
       </h2>
       
@@ -46,27 +46,31 @@ const Roadmap = () => {
             key={index} 
             className={`glass-card p-4 sm:p-5 md:p-6 rounded-xl border-l-4 transition-all duration-300 cursor-pointer group hover:-translate-y-1 sm:hover:-translate-y-2 ${
               phase.active 
-                ? 'border-l-indigo-500 hover:shadow-[0_0_20px_rgba(108,99,255,0.3)] hover:border-l-indigo-400' 
-                : 'border-l-slate-700 hover:border-l-slate-500 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]'
+                ? 'border-l-indigo-500 hover:shadow-[0_0_20px_rgba(99,102,241,0.15)] hover:border-l-indigo-400' 
+                : 'border-l-gray-300 hover:border-l-gray-400 hover:shadow-[0_0_15px_rgba(0,0,0,0.05)]'
             }`}
           >
             {/* Phase Badge & Status */}
             <div className="flex items-center justify-between mb-2 sm:mb-3">
               <span className={`font-bold text-[10px] sm:text-xs uppercase tracking-widest ${
-                phase.active ? 'text-indigo-400' : 'text-slate-500'
+                phase.active ? 'text-indigo-600' : 'text-gray-500'
               }`}>
                 {phase.phase}
               </span>
               {phase.completed && (
                 <CheckCircleIcon 
-                  className="text-green-400"
+                  className="text-green-500"
                   style={{ fontSize: '16px' }}
                 />
               )}
             </div>
             
             {/* Title */}
-            <h4 className="font-bold text-white text-base sm:text-lg md:text-xl mb-3 sm:mb-4 group-hover:text-indigo-300 transition-colors duration-300 font-['Space_Grotesk']">
+            <h4 className={`font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-4 font-['Space_Grotesk'] transition-colors duration-300 ${
+              phase.active 
+                ? 'text-gray-800 group-hover:text-indigo-600' 
+                : 'text-gray-600 group-hover:text-gray-800'
+            }`}>
               {phase.title}
             </h4>
             
@@ -79,13 +83,13 @@ const Roadmap = () => {
                 >
                   <ArrowForwardIcon 
                     className={`${
-                      phase.active ? 'text-indigo-400' : 'text-slate-600'
+                      phase.active ? 'text-indigo-400' : 'text-gray-400'
                     } group-hover:translate-x-1 transition-transform duration-300`}
                     style={{ fontSize: '12px' }}
                   />
                   <span className={`${
-                    phase.active ? 'text-slate-200' : 'text-slate-500'
-                  } group-hover:text-slate-300 transition-colors duration-300 text-xs sm:text-sm`}>
+                    phase.active ? 'text-gray-700' : 'text-gray-500'
+                  } group-hover:text-gray-800 transition-colors duration-300 text-xs sm:text-sm`}>
                     {item}
                   </span>
                 </li>
@@ -93,14 +97,14 @@ const Roadmap = () => {
             </ul>
             
             {/* Progress Indicator */}
-            <div className="w-full bg-slate-700/50 rounded-full h-1 overflow-hidden">
+            <div className="w-full bg-gray-200 rounded-full h-1 overflow-hidden">
               <div 
                 className={`h-full rounded-full transition-all duration-500 ${
                   phase.completed 
                     ? 'bg-gradient-to-r from-green-400 to-green-500 w-full' 
                     : phase.active 
                       ? 'bg-gradient-to-r from-indigo-500 to-blue-500 w-1/3' 
-                      : 'bg-slate-700 w-0'
+                      : 'bg-gray-300 w-0'
                 }`}
               ></div>
             </div>

@@ -54,7 +54,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const data = await api("/api/admin/auth/send-otp", {
+      const data = await api("/admin/auth/send-otp", {
         method: "POST",
         body: JSON.stringify({ email }),
       });
@@ -107,7 +107,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const data = await api("/api/admin/auth/verify-otp", {
+      const data = await api("/admin/auth/verify-otp", {
         method: "POST",
         body: JSON.stringify({ email, otp }),
       });
@@ -161,7 +161,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const data = await api("/api/admin/auth/resend-otp", {
+      const data = await api("/admin/auth/resend-otp", {
         method: "POST",
         body: JSON.stringify({ email }),
       });
@@ -195,7 +195,6 @@ const AdminLogin = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0B1120] to-[#0F172A] flex items-center justify-center p-4">
       <div className="bg-[#111827] rounded-2xl p-8 max-w-md w-full border border-gray-800">
-
         <h1 className="text-3xl font-bold text-center mb-6 text-white">
           Admin Login
         </h1>

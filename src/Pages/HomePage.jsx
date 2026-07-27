@@ -13,7 +13,7 @@ const HomePage = () => {
   return (
     <div className="overflow-x-hidden w-full">
       <Header />
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
         <HeroSection />
         <FeatureCards />
         <CoreFeatures />

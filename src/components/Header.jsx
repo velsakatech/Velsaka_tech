@@ -57,69 +57,69 @@ export default function Header({ user, onLogout }) {
 
   /**
    * =========================
-   * 🔷 MAIN HEADER (NON-ADMIN)
+   * 🔷 MAIN HEADER (NON-ADMIN) – LIGHT THEME, COMPACT
    * =========================
    */
   if (!isAdminPage) {
     return (
       <>
-        <header className="fixed top-0 left-0 right-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/10">
+        <header className="fixed top-0 left-0 right-0 w-full z-50 bg-[#f9fafb]/95 backdrop-blur-md border-b border-[#e5e7eb]">
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               
-              {/* Mobile & Tablet Layout (Below 1024px) */}
-              <div className="lg:hidden flex items-center justify-between h-14 sm:h-16">
+              {/* Mobile & Tablet Layout */}
+              <div className="lg:hidden flex items-center justify-between h-12 sm:h-14">
                 {/* Logo */}
                 <NavLink to="/" className="flex items-center gap-2 flex-shrink-0">
                   <img
                     src={VelSAKA_LOGO}
                     alt="VELSAKA TECH Logo"
-                    className="h-7 sm:h-8 w-auto object-contain"
+                    className="h-6 sm:h-7 w-auto object-contain"
                   />
-                  <span className="text-white font-bold text-xs sm:text-sm tracking-wide">
+                  <span className="text-black font-bold text-xs sm:text-sm tracking-wide">
                     VELSAKA TECH
                   </span>
                 </NavLink>
 
-                {/* Menu Button - REMOVED square background */}
+                {/* Menu Button */}
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
                   className="p-0 hover:opacity-80 transition-all duration-200 active:scale-95 bg-transparent border-0 shadow-none"
                   aria-label="Toggle menu"
                 >
                   {menuOpen ? (
-                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <X className="w-5 h-5 sm:w-6 sm:h-6 text-black" />
                   ) : (
-                    <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-black" />
                   )}
                 </button>
               </div>
 
-              {/* Desktop Layout (1024px and above) */}
-              <div className="hidden lg:flex items-center justify-between h-20">
+              {/* Desktop Layout */}
+              <div className="hidden lg:flex items-center justify-between h-16">
                 {/* Logo */}
                 <NavLink to="/" className="flex items-center gap-3 flex-shrink-0">
                   <img
                     src={VelSAKA_LOGO}
                     alt="VELSAKA TECH Logo"
-                    className="h-10 w-auto object-contain"
+                    className="h-8 w-auto object-contain"
                   />
-                  <span className="text-white font-bold text-lg tracking-wide">
+                  <span className="text-black font-bold text-base tracking-wide">
                     VELSAKA TECH
                   </span>
                 </NavLink>
 
                 {/* Desktop Navigation */}
-                <nav className="flex items-center gap-6">
+                <nav className="flex items-center gap-4">
                   {navLinks.map((link) => (
                     <NavLink
                       key={link.name}
                       to={link.path}
                       className={({ isActive }) =>
-                        `text-base font-medium transition-colors duration-200 whitespace-nowrap ${
+                        `text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                           isActive
-                            ? "text-yellow-400"
-                            : "text-slate-300 hover:text-yellow-400"
+                            ? "text-indigo-600"
+                            : "text-black hover:text-indigo-600"
                         }`
                       }
                     >
@@ -131,7 +131,7 @@ export default function Header({ user, onLogout }) {
                 {/* CTA Button */}
                 <NavLink
                   to="/contact"
-                  className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-md hover:shadow-indigo-500/30 whitespace-nowrap"
+                  className="px-4 py-1.5 rounded-full text-sm font-semibold text-white bg-slate-700 hover:bg-slate-800 transition-all shadow-sm hover:shadow-md whitespace-nowrap"
                 >
                   Get in Touch
                 </NavLink>
@@ -146,25 +146,25 @@ export default function Header({ user, onLogout }) {
             {/* Backdrop */}
             <div
               onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 lg:hidden transition-all duration-300"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden transition-all duration-300"
             />
 
             {/* Sidebar Menu */}
-            <div className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-slate-950 z-50 lg:hidden shadow-2xl border-l border-white/10 transform transition-transform duration-300 translate-x-0 overflow-y-auto">
+            <div className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#f9fafb] z-50 lg:hidden shadow-2xl border-l border-[#e5e7eb] transform transition-transform duration-300 translate-x-0 overflow-y-auto">
               {/* Menu Header */}
-              <div className="sticky top-0 flex justify-between items-center p-4 border-b border-white/10 bg-slate-950">
+              <div className="sticky top-0 flex justify-between items-center p-4 border-b border-[#e5e7eb] bg-[#f9fafb]">
                 <div className="flex items-center gap-2">
-                  <img src={VelSAKA_LOGO} className="h-7 w-auto" alt="Logo" />
-                  <span className="text-white font-semibold text-sm">
+                  <img src={VelSAKA_LOGO} className="h-6 w-auto" alt="Logo" />
+                  <span className="text-black font-semibold text-sm">
                     VELSAKA TECH
                   </span>
                 </div>
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="p-1 hover:bg-white/10 rounded-lg transition-colors"
+                  className="p-1 hover:bg-[#e5e7eb] rounded-lg transition-colors"
                   aria-label="Close menu"
                 >
-                  <X className="text-white w-5 h-5" />
+                  <X className="text-black w-5 h-5" />
                 </button>
               </div>
 
@@ -178,8 +178,8 @@ export default function Header({ user, onLogout }) {
                     className={({ isActive }) =>
                       `px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                         isActive
-                          ? "bg-indigo-500/20 text-yellow-400 border-l-2 border-yellow-400"
-                          : "text-slate-300 hover:bg-white/5 hover:text-yellow-400"
+                          ? "bg-indigo-100 text-indigo-600 border-l-2 border-indigo-500"
+                          : "text-black hover:bg-[#e5e7eb] hover:text-indigo-600"
                       }`
                     }
                   >
@@ -188,13 +188,13 @@ export default function Header({ user, onLogout }) {
                 ))}
 
                 {/* Divider */}
-                <div className="h-px bg-white/10 my-2"></div>
+                <div className="h-px bg-[#e5e7eb] my-2"></div>
 
                 {/* CTA Button in Menu */}
                 <NavLink
                   to="/contact"
                   onClick={() => setMenuOpen(false)}
-                  className="mt-2 text-center py-3 rounded-lg text-white font-semibold text-base bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 transition-all shadow-md active:scale-95"
+                  className="mt-2 text-center py-3 rounded-lg text-white font-semibold text-base bg-slate-700 hover:bg-slate-800 transition-all shadow-sm active:scale-95"
                 >
                   Get in Touch
                 </NavLink>
@@ -204,38 +204,38 @@ export default function Header({ user, onLogout }) {
         )}
 
         {/* Spacer for fixed header */}
-        <div className="h-14 sm:h-16 lg:h-20" />
+        <div className="h-12 sm:h-14 lg:h-16" />
       </>
     );
   }
 
   /**
    * =========================
-   * 🔷 ADMIN HEADER (FULLY RESPONSIVE)
+   * 🔷 ADMIN HEADER – LIGHT THEME, COMPACT
    * =========================
    */
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 w-full z-50 bg-[#f9fafb]/95 backdrop-blur-md border-b border-[#e5e7eb]">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             
             {/* Mobile & Tablet Admin Header */}
-            <div className="lg:hidden flex items-center justify-between h-14 sm:h-16">
+            <div className="lg:hidden flex items-center justify-between h-12 sm:h-14">
               <NavLink to="/admin/dashboard" className="flex items-center gap-2">
-                <img src={VelSAKA_LOGO} className="h-7 sm:h-8 w-auto" alt="Logo" />
-                <span className="text-white font-semibold text-xs sm:text-sm">
+                <img src={VelSAKA_LOGO} className="h-6 sm:h-7 w-auto" alt="Logo" />
+                <span className="text-black font-semibold text-xs sm:text-sm">
                   VELSAKA TECH
                 </span>
               </NavLink>
 
-              <span className="text-indigo-400 font-semibold text-sm">
+              <span className="text-indigo-600 font-semibold text-sm">
                 Admin
               </span>
 
               <button
                 onClick={onLogout}
-                className="flex items-center gap-1 px-2 py-1.5 text-xs bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 active:scale-95"
+                className="flex items-center gap-1 px-2 py-1 text-xs bg-red-50 border border-red-300 rounded-lg text-red-600 active:scale-95"
               >
                 <LogOut className="w-3 h-3" />
                 <span className="hidden xs:inline">Logout</span>
@@ -243,30 +243,30 @@ export default function Header({ user, onLogout }) {
             </div>
 
             {/* Desktop Admin Header */}
-            <div className="hidden lg:flex items-center justify-between h-20">
+            <div className="hidden lg:flex items-center justify-between h-16">
               <NavLink to="/admin/dashboard" className="flex items-center gap-3">
-                <img src={VelSAKA_LOGO} className="h-10 w-auto" alt="Logo" />
-                <span className="text-white font-semibold text-base">
+                <img src={VelSAKA_LOGO} className="h-8 w-auto" alt="Logo" />
+                <span className="text-black font-semibold text-base">
                   VELSAKA TECH
                 </span>
               </NavLink>
 
-              <span className="text-indigo-400 font-semibold text-xl">
+              <span className="text-indigo-600 font-semibold text-lg">
                 Admin Panel
               </span>
 
               <div className="flex items-center gap-4">
                 {user && (
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
-                    <User className="w-4 h-4 text-indigo-400" />
-                    <span className="text-sm text-gray-300">
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-50 border border-indigo-200">
+                    <User className="w-4 h-4 text-indigo-600" />
+                    <span className="text-sm text-black">
                       {user.name || user.email}
                     </span>
                   </div>
                 )}
                 <button
                   onClick={onLogout}
-                  className="flex items-center gap-2 px-4 py-2 text-sm bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 hover:text-red-300 transition-all duration-200"
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm bg-red-50 hover:bg-red-100 border border-red-300 rounded-lg text-red-600 hover:text-red-700 transition-all duration-200"
                 >
                   <LogOut className="w-4 h-4" />
                   <span>Logout</span>
@@ -278,7 +278,7 @@ export default function Header({ user, onLogout }) {
       </header>
 
       {/* Spacer */}
-      <div className="h-14 sm:h-16 lg:h-20" />
+      <div className="h-12 sm:h-14 lg:h-16" />
     </>
   );
 }

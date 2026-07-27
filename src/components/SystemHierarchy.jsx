@@ -44,13 +44,13 @@ const SystemHierarchy = () => {
       id="system-hierarchy" 
       className="relative w-full px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 lg:py-24 overflow-visible"
     >
-      {/* Animated Background Glow - No overflow issues */}
+      {/* Animated Background Glow - Soft for light theme */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-indigo-500/5 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] animate-pulse-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-indigo-200/30 rounded-full blur-[80px] sm:blur-[100px] md:blur-[120px] animate-pulse-slow" />
       </div>
 
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 font-['Space_Grotesk']">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 font-['Space_Grotesk']">
           System Hierarchy
         </h2>
         
@@ -59,9 +59,9 @@ const SystemHierarchy = () => {
           <div className={`transform transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
           }`}>
-            <div className="glass-card px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-2.5 md:py-3 lg:py-4 rounded-full border border-indigo-500/50 shadow-[0_0_15px_rgba(108,99,255,0.2)] hover:scale-105 hover:shadow-[0_0_25px_rgba(108,99,255,0.4)] transition-all duration-300 cursor-pointer">
-              <span className="font-bold text-white text-sm sm:text-base md:text-lg lg:text-xl flex items-center gap-2">
-                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-400 rounded-full animate-pulse"></span>
+            <div className="glass-card px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-2.5 md:py-3 lg:py-4 rounded-full border border-indigo-300 shadow-[0_0_15px_rgba(99,102,241,0.15)] hover:scale-105 hover:shadow-[0_0_25px_rgba(99,102,241,0.25)] transition-all duration-300 cursor-pointer">
+              <span className="font-bold text-gray-800 text-sm sm:text-base md:text-lg lg:text-xl flex items-center gap-2">
+                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full animate-pulse"></span>
                 Main Gateway
               </span>
             </div>
@@ -71,7 +71,7 @@ const SystemHierarchy = () => {
           <div className={`relative transition-all duration-700 delay-300 ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}>
-            <div className="w-0.5 h-8 sm:h-10 md:h-12 lg:h-14 bg-gradient-to-b from-indigo-500 to-transparent"></div>
+            <div className="w-0.5 h-8 sm:h-10 md:h-12 lg:h-14 bg-gradient-to-b from-indigo-400 to-transparent"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-400 rounded-full animate-ping" />
           </div>
           
@@ -89,8 +89,8 @@ const SystemHierarchy = () => {
               >
                 {/* Module Box */}
                 <div className="relative w-full">
-                  <div className="glass-card px-4 sm:px-5 md:px-6 lg:px-7 py-2 sm:py-2.5 md:py-3 lg:py-4 rounded-xl border border-white/10 hover:border-indigo-500/40 hover:bg-white/5 hover:shadow-[0_0_20px_rgba(108,99,255,0.2)] transition-all duration-300 hover:-translate-y-1 text-center">
-                    <span className="font-semibold text-white text-sm sm:text-base md:text-lg">
+                  <div className="glass-card px-4 sm:px-5 md:px-6 lg:px-7 py-2 sm:py-2.5 md:py-3 lg:py-4 rounded-xl border border-gray-200 hover:border-indigo-300 hover:bg-white/80 hover:shadow-[0_0_20px_rgba(99,102,241,0.12)] transition-all duration-300 hover:-translate-y-1 text-center">
+                    <span className="font-semibold text-gray-800 text-sm sm:text-base md:text-lg">
                       {module.title}
                     </span>
                   </div>
@@ -98,14 +98,14 @@ const SystemHierarchy = () => {
                 
                 {/* Vertical Line */}
                 <div className="relative">
-                  <div className="w-0.5 h-4 sm:h-5 md:h-6 bg-gradient-to-b from-indigo-500/50 to-transparent my-2 sm:my-3"></div>
+                  <div className="w-0.5 h-4 sm:h-5 md:h-6 bg-gradient-to-b from-indigo-400/50 to-transparent my-2 sm:my-3"></div>
                   {animatedItems.includes(index) && (
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-indigo-400 rounded-full animate-pulse" />
                   )}
                 </div>
                 
                 {/* Subtitle */}
-                <div className="text-xs sm:text-sm text-slate-400 text-center">
+                <div className="text-xs sm:text-sm text-gray-500 text-center">
                   {module.subtitle}
                 </div>
               </div>
@@ -114,7 +114,7 @@ const SystemHierarchy = () => {
         </div>
       </div>
 
-      {/* Custom animations without scrollbar issues */}
+      {/* Custom animations - unchanged */}
       <style>{`
         @keyframes pulse-slow {
           0%, 100% {

@@ -18,20 +18,19 @@ import Logo from "../assets/VelSAKA_Logo.jpeg";
 
 export default function UnderDevelopment() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#020617] flex items-center justify-center px-4">
+    <div className="relative min-h-screen overflow-hidden bg-white flex items-center justify-center px-4">
+      {/* Background Gradient – soft violet glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.12),transparent_40%)]" />
 
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.18),transparent_40%)]" />
+      {/* Floating Blurs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-violet-200/30 blur-3xl rounded-full" />
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-cyan-200/30 blur-3xl rounded-full" />
 
-      {/* Floating Blur */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-violet-500/20 blur-3xl rounded-full" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-cyan-500/20 blur-3xl rounded-full" />
-
-      {/* Multiple "VELSAKA Under Development" Text - Background Watermarks */}
+      {/* Background Watermarks – dark text with very low opacity */}
       <motion.div
         animate={{ opacity: [0.03, 0.08, 0.03] }}
         transition={{ duration: 4, repeat: Infinity }}
-        className="absolute top-1/4 left-1/4 text-6xl font-bold text-white whitespace-nowrap rotate-[-15deg] pointer-events-none"
+        className="absolute top-1/4 left-1/4 text-6xl font-bold text-black whitespace-nowrap rotate-[-15deg] pointer-events-none"
         style={{ opacity: 0.05 }}
       >
         VELSAKA Under Development
@@ -40,7 +39,7 @@ export default function UnderDevelopment() {
       <motion.div
         animate={{ opacity: [0.03, 0.08, 0.03] }}
         transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-        className="absolute bottom-1/3 right-1/4 text-5xl font-bold text-white whitespace-nowrap rotate-12 pointer-events-none"
+        className="absolute bottom-1/3 right-1/4 text-5xl font-bold text-black whitespace-nowrap rotate-12 pointer-events-none"
         style={{ opacity: 0.05 }}
       >
         VELSAKA Under Development
@@ -49,13 +48,13 @@ export default function UnderDevelopment() {
       <motion.div
         animate={{ opacity: [0.02, 0.06, 0.02] }}
         transition={{ duration: 6, repeat: Infinity, delay: 2 }}
-        className="absolute top-2/3 left-1/3 text-4xl font-bold text-white whitespace-nowrap rotate-[-25deg] pointer-events-none"
+        className="absolute top-2/3 left-1/3 text-4xl font-bold text-black whitespace-nowrap rotate-[-25deg] pointer-events-none"
         style={{ opacity: 0.04 }}
       >
         VELSAKA Under Development
       </motion.div>
 
-      {/* Floating Icons */}
+      {/* Floating Icons – transparent violet/cyan/pink tones */}
       <motion.div
         animate={{ y: [0, -18, 0] }}
         transition={{ duration: 5, repeat: Infinity }}
@@ -80,56 +79,54 @@ export default function UnderDevelopment() {
         <Layers3 size={60} strokeWidth={1.2} />
       </motion.div>
 
-      {/* Small icon tags around the page */}
+      {/* Small icon tags around the page – light backgrounds, dark text */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.6 }}
         transition={{ delay: 0.5 }}
-        className="absolute top-32 right-[20%] text-xs bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-2"
+        className="absolute top-32 right-[20%] text-xs bg-gray-100 px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-2"
       >
-        <Construction size={12} className="text-violet-400" />
-        <span className="text-violet-400/40">VELSAKA Under Development</span>
+        <Construction size={12} className="text-violet-600" />
+        <span className="text-violet-600/70">VELSAKA Under Development</span>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.6 }}
         transition={{ delay: 0.8 }}
-        className="absolute bottom-32 left-[15%] text-xs bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-2"
+        className="absolute bottom-32 left-[15%] text-xs bg-gray-100 px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-2"
       >
-        <AlertTriangle size={12} className="text-cyan-400" />
-        <span className="text-cyan-400/40">VELSAKA Under Development</span>
+        <AlertTriangle size={12} className="text-cyan-600" />
+        <span className="text-cyan-600/70">VELSAKA Under Development</span>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.6 }}
         transition={{ delay: 1.1 }}
-        className="absolute top-1/2 right-[8%] text-xs bg-black/20 px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-2"
+        className="absolute top-1/2 right-[8%] text-xs bg-gray-100 px-3 py-1 rounded-full backdrop-blur-sm flex items-center gap-2"
         style={{ writingMode: "vertical-rl" }}
       >
-        <Clock size={12} className="text-pink-400" />
-        <span className="text-pink-400/40">VELSAKA in Progress</span>
+        <Clock size={12} className="text-pink-600" />
+        <span className="text-pink-600/70">VELSAKA in Progress</span>
       </motion.div>
 
       {/* Main Container */}
       <div className="relative z-10 max-w-5xl w-full grid lg:grid-cols-2 gap-12 items-center">
-
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-
-          {/* Animated Badge */}
+          {/* Animated Badge – lighter bg, dark text */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-violet-500/20 bg-violet-500/10 text-violet-300 text-lg sm:text-xl font-semibold mb-8 backdrop-blur-xl"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-violet-300/40 bg-violet-100/60 text-violet-700 text-lg sm:text-xl font-semibold mb-8 backdrop-blur-xl"
           >
-            <Sparkles size={22} className="text-violet-300" />
+            <Sparkles size={22} className="text-violet-600" />
 
             {/* Typewriter */}
             <motion.span
@@ -140,52 +137,52 @@ export default function UnderDevelopment() {
                 repeat: Infinity,
                 repeatDelay: 1,
               }}
-              className="overflow-hidden whitespace-nowrap border-r-2 border-violet-400 pr-2"
+              className="overflow-hidden whitespace-nowrap border-r-2 border-violet-500 pr-2"
             >
               VELSAKA Under Development
             </motion.span>
           </motion.div>
 
-          {/* Heading */}
-          <h1 className="text-5xl sm:text-6xl font-black text-white leading-tight mb-6">
-           Building a
-            <span className="block bg-gradient-to-r from-violet-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+          {/* Heading – black, gradient for special words */}
+          <h1 className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight mb-6">
+            Building a
+            <span className="block bg-gradient-to-r from-violet-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
               Premium Experience
             </span>
           </h1>
 
           {/* Description */}
-          <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+          <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
             VelSAKA Tech is currently crafting a modern and high-performance
             digital platform designed for innovation, creativity, and speed.
           </p>
 
           {/* Feature Points */}
           <div className="space-y-4 mb-10">
-            <div className="flex items-center gap-3 text-slate-300">
-              <Zap className="text-violet-400" size={20} />
+            <div className="flex items-center gap-3 text-gray-700">
+              <Zap className="text-violet-500" size={20} />
               High-speed modern architecture
             </div>
 
-            <div className="flex items-center gap-3 text-slate-300">
-              <Globe2 className="text-cyan-400" size={20} />
+            <div className="flex items-center gap-3 text-gray-700">
+              <Globe2 className="text-cyan-500" size={20} />
               Responsive & scalable experience
             </div>
 
-            <div className="flex items-center gap-3 text-slate-300">
-              <Code2 className="text-pink-400" size={20} />
+            <div className="flex items-center gap-3 text-gray-700">
+              <Code2 className="text-pink-500" size={20} />
               Crafted with advanced technologies
             </div>
           </div>
 
-          {/* Status Bar - Fully Active Progress */}
-          <motion.div 
+          {/* Status Bar – Full Active Progress */}
+          <motion.div
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{ duration: 1, delay: 0.5 }}
             className="mb-6"
           >
-            <div className="flex justify-between text-xs text-slate-500 mb-1">
+            <div className="flex justify-between text-xs text-gray-500 mb-1">
               <div className="flex items-center gap-2">
                 <Cpu size={12} />
                 <span>Development Progress</span>
@@ -195,8 +192,8 @@ export default function UnderDevelopment() {
                 <span>VELSAKA Under Development</span>
               </div>
             </div>
-            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-              <motion.div 
+            <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 2, delay: 0.5 }}
@@ -215,7 +212,7 @@ export default function UnderDevelopment() {
               <ArrowRight size={18} />
             </Link>
 
-            <button className="px-7 py-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 transition-all">
+            <button className="px-7 py-3 rounded-xl border border-gray-300 bg-gray-100/50 backdrop-blur-md text-gray-800 hover:bg-gray-200 transition-all">
               Contact Team
             </button>
           </div>
@@ -228,21 +225,21 @@ export default function UnderDevelopment() {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center"
         >
-          {/* Outer Glow Ring */}
+          {/* Outer Glow Ring – dashed */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[320px] h-[320px] rounded-full border border-violet-500/20 border-dashed"
+            className="absolute w-[320px] h-[320px] rounded-full border border-violet-300/30 border-dashed"
           />
 
           {/* Middle Ring */}
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[260px] h-[260px] rounded-full border border-cyan-400/20"
+            className="absolute w-[260px] h-[260px] rounded-full border border-cyan-300/30"
           />
 
-          {/* Inner Ring with Text */}
+          {/* Inner Ring with Text – now visible on white */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -252,7 +249,7 @@ export default function UnderDevelopment() {
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute text-[10px] text-violet-400/60 whitespace-nowrap flex items-center gap-1"
+                  className="absolute text-[10px] text-violet-500/80 whitespace-nowrap flex items-center gap-1"
                   style={{
                     top: "50%",
                     left: "50%",
@@ -268,9 +265,9 @@ export default function UnderDevelopment() {
           </motion.div>
 
           {/* Glow */}
-          <div className="absolute w-[220px] h-[220px] bg-violet-500/20 blur-3xl rounded-full" />
+          <div className="absolute w-[220px] h-[220px] bg-violet-200/40 blur-3xl rounded-full" />
 
-          {/* Logo */}
+          {/* Logo – now perfectly round */}
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 4, repeat: Infinity }}
@@ -280,10 +277,10 @@ export default function UnderDevelopment() {
               <img
                 src={Logo}
                 alt="VELSAKA TECH"
-                className="h-52 w-52 sm:h-60 sm:w-60 object-cover rounded-[2.5rem] border border-white/10 shadow-2xl"
+                className="h-52 w-52 sm:h-60 sm:w-60 object-cover rounded-full border border-gray-200 shadow-2xl"
               />
-              {/* Overlay text on logo */}
-              <div className="absolute inset-0 bg-black/40 rounded-[2.5rem] flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+              {/* Overlay text on logo (shown on hover) */}
+              <div className="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                 <div className="flex items-center gap-2 text-white text-xs font-bold px-2 py-1 bg-black/50 rounded-lg backdrop-blur-sm">
                   <Construction size={12} />
                   <span>VELSAKA</span>
@@ -291,12 +288,9 @@ export default function UnderDevelopment() {
               </div>
             </div>
           </motion.div>
-
         </motion.div>
-
       </div>
 
-    
       <style jsx>{`
         @keyframes spin {
           from {

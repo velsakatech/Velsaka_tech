@@ -12,12 +12,13 @@ import About from "../Pages/AboutPage";
 import Services from "../Pages/ServicesPage";
 import Contact from "../Pages/ContactPage";
 import Products from "../Pages/ProductsPage";
-//import Careers from "../Pages/CareersPage"; // ✅ FIXED
+import Pricing from "../Pages/PricingPage";
 import NotFound from "../Pages/NotFound";
 import UnderDevelopment from "../Pages/UnderDevelopment";
 import CookiesPolicy from "../Pages/CookiesPolicy";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsPage from "../Pages/Terms&ConditionsPage";
+
 /* =========================
    ADMIN PAGES
 ========================= */
@@ -28,9 +29,7 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* =========================
-            PUBLIC ROUTES
-        ========================= */}
+        {/* PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
         <Route path="/cookies" element={<CookiesPolicy />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
@@ -40,16 +39,13 @@ const AppRouter = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<UnderDevelopment />} />
-        <Route path="/pricing" element={<UnderDevelopment />} />
 
-        {/* =========================
-            ADMIN ROUTES
-        ========================= */}
+        {/* FIXED */}
+        <Route path="/pricing" element={<Pricing />} />
 
-        {/* Login */}
+        {/* ADMIN ROUTES */}
         <Route path="/admin/login" element={<AdminLogin />} />
 
-        {/* Protected Dashboard */}
         <Route
           path="/admin/dashboard"
           element={
@@ -59,18 +55,13 @@ const AppRouter = () => {
           }
         />
 
-        {/* Redirect /admin → dashboard */}
         <Route
           path="/admin"
           element={<Navigate to="/admin/dashboard" replace />}
         />
 
-        {/* =========================
-            404 PAGE
-        ========================= */}
+        {/* 404 */}
         <Route path="/404" element={<NotFound />} />
-
-        {/* Catch all */}
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
     </BrowserRouter>
