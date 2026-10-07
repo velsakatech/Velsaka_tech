@@ -1,72 +1,149 @@
 // src/api/client.js
 
-// ✅ Production-safe BASE URL with fallback
-const BASE_URL =
+import { auth } from "../firebase";
+
+const RAW_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ||
   "http://localhost:5000";
 
-console.log("🌐 API BASE URL:", BASE_URL);
+const BASE_URL = RAW_BASE_URL
+  .replace(/\/+$/, "")
+  .replace(/\/api$/i, "");
 
-export const api = async (path, options = {}) => {
-  const token = localStorage.getItem("adminToken");
+console.log(
+  "🌐 API BASE URL:",
+  BASE_URL
+);
 
-  // ✅ Normalize path
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+export const api = async (
+  path,
+  options = {}
+) => {
+  const normalizedPath = path.startsWith("/")
+    ? path
+    : `/${path}`;
 
-  // ✅ Ensure no duplicate /admin
-  let finalPath = normalizedPath;
-  if (finalPath.includes("/admin/admin/")) {
-    finalPath = finalPath.replace("/admin/admin/", "/admin/");
+  const finalPath =
+    normalizedPath === "/api" ||
+    normalizedPath.startsWith("/api/")
+      ? normalizedPath
+      : `/api${normalizedPath}`;
+
+  const url =
+    `${BASE_URL}${finalPath}`;
+
+  console.log(
+    "➡️ API Request:",
+    url
+  );
+
+  let firebaseToken = null;
+
+  const currentUser =
+    auth.currentUser;
+
+  if (currentUser) {
+    try {
+      firebaseToken =
+        await currentUser.getIdToken();
+
+      console.log(
+        "🔐 Firebase ID token available"
+      );
+    } catch (error) {
+      console.error(
+        "❌ Firebase token error:",
+        error
+      );
+    }
   }
 
-  // ✅ Always prefix /api (clean architecture)
-  const url = `${BASE_URL}/api${finalPath}`;
+  const headers = {
+    ...(options.body
+      ? {
+          "Content-Type":
+            "application/json",
+        }
+      : {}),
 
-  console.log("➡️ API Request:", url);
+    ...(options.headers || {}),
+
+    ...(firebaseToken
+      ? {
+          Authorization:
+            `Bearer ${firebaseToken}`,
+        }
+      : {}),
+  };
 
   try {
-    const res = await fetch(url, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        ...(options.headers || {}),
-      },
-    });
+    const response =
+      await fetch(url, {
+        ...options,
+        headers,
+      });
 
-    const text = await res.text();
+    const contentType =
+      response.headers.get(
+        "content-type"
+      ) || "";
 
-    let data = {};
-    try {
-      data = text ? JSON.parse(text) : {};
-    } catch (parseError) {
-      console.error("❌ JSON Parse Error:", parseError);
-      data = { message: "Invalid response from server" };
+    let data;
+
+    if (
+      contentType.includes(
+        "application/json"
+      )
+    ) {
+      data = await response.json();
+    } else {
+      const text =
+        await response.text();
+
+      console.error(
+        "❌ Non-JSON API response:",
+        text.substring(0, 500)
+      );
+
+      data = {
+        success: false,
+        message:
+          text ||
+          `HTTP ${response.status}`,
+      };
     }
 
-    if (!res.ok) {
-      // 🔐 Handle auth failure
-      if (res.status === 401) {
-        localStorage.removeItem("adminToken");
-
-        if (!window.location.pathname.includes("/admin/login")) {
-          window.location.href = "/admin/login";
-        }
+    if (!response.ok) {
+      if (
+        response.status === 401
+      ) {
+        console.error(
+          "❌ API Unauthorized"
+        );
       }
 
-      throw new Error(data?.message || `HTTP ${res.status}`);
+      throw new Error(
+        data?.message ||
+          `HTTP ${response.status}`
+      );
     }
 
     return data;
   } catch (error) {
-    console.error("❌ API Error:", {
-      url,
-      path,
-      message: error.message,
-    });
+    console.error(
+      "❌ API Error:",
+      {
+        url,
+        path,
+        message:
+          error.message,
+      }
+    );
 
-    // 🌐 Network error handling
-    if (error.message === "Failed to fetch") {
+    if (
+      error.message ===
+      "Failed to fetch"
+    ) {
       throw new Error(
         `Cannot connect to server. Please check backend: ${BASE_URL}`
       );

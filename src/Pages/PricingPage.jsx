@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-import Logo from "../assets/VelSAKA_Logo.jpeg";
 
 const PricingPage = () => {
   const navigate = useNavigate();
@@ -10,310 +9,629 @@ const PricingPage = () => {
 
   const faqs = [
     {
-      question: "Can I change plans at any time?",
-      answer: "Yes, you can upgrade or downgrade your plan at any time through your dashboard. The changes will take effect immediately and will be prorated on your next billing cycle."
+      question: "Are the prices fixed?",
+      answer:
+        "The prices shown on this page are starting prices. Final pricing is negotiable and depends on your exact requirements, project complexity, features, integrations, timeline, and deployment needs.",
     },
     {
-      question: "Is there a free trial available?",
-      answer: "We offer a 14-day free trial for our Pro plan, no credit card required. Experience all premium features before making a commitment."
+      question: "Can I negotiate the project price?",
+      answer:
+        "Yes. We are flexible with pricing. Share your requirements and expected budget, and we can discuss the scope, prioritize important features, and provide a suitable quotation.",
+    },
+    {
+      question: "How long does a typical project take?",
+      answer:
+        "Simple websites and tools may take around 1–3 weeks. Web applications, AI solutions, SaaS products, and custom software may take several weeks depending on the project scope.",
+    },
+    {
+      question: "Do you require upfront payment?",
+      answer:
+        "Yes. Projects generally begin with an advance payment. For larger projects, the remaining amount can be divided into development milestones. The exact payment structure can be discussed before starting.",
     },
     {
       question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, PayPal, and cryptocurrency for annual enterprise contracts."
+      answer:
+        "We accept UPI and bank transfer. Other payment options can be discussed depending on the project and client requirements.",
     },
     {
-      question: "Do you offer discounts for non-profits?",
-      answer: "Yes! We have special pricing for educational institutions and registered non-profit organizations. Please contact our support team."
-    }
+      question: "Do you offer ongoing maintenance?",
+      answer:
+        "Yes. Maintenance and support plans are available starting from ₹1,999/month. The final maintenance price depends on the application and the level of support required.",
+    },
+    {
+      question: "Do you offer discounts for students or startups?",
+      answer:
+        "We may offer special pricing for students, early-stage startups, and selected projects depending on the scope and requirements. Contact us to discuss your project.",
+    },
   ];
 
+  const pricingCategories = [
+    {
+      icon: "school",
+      title: "Student & Academic",
+      price: "₹99+",
+      description:
+        "Affordable tools, documentation and development assistance for students.",
+      services: [
+        "Project Abstract — ₹99+",
+        "AI PPT / Presentation — ₹299+",
+        "Seminar / Project Presentation — ₹299+",
+        "SRS Documentation — ₹499+",
+        "UML / ER / Flowcharts — ₹299+",
+        "Project Documentation — ₹999+",
+        "Viva Preparation — ₹299+",
+        "College Mini Project — ₹2,999+",
+        "College Major Project — ₹5,999+",
+      ],
+    },
+    {
+      icon: "picture_as_pdf",
+      title: "PDF & Documents",
+      price: "₹99+",
+      description:
+        "Simple PDF tools, document conversion and AI-powered document solutions.",
+      services: [
+        "Image → PDF — ₹99+",
+        "PDF Merge / Split / Compress — ₹199+",
+        "PDF → Word — ₹199+",
+        "Word → PDF — ₹199+",
+        "PDF Generation — ₹299+",
+        "Document Conversion — ₹299+",
+        "Custom PDF Tool — ₹2,999+",
+        "AI PDF / Document Q&A — ₹6,999+",
+      ],
+    },
+    {
+      icon: "work",
+      title: "Career Tools",
+      price: "₹199+",
+      description:
+        "Affordable career tools for resumes, portfolios and professional profiles.",
+      services: [
+        "Cover Letter Generator — ₹199+",
+        "Resume / CV Builder — ₹299+",
+        "ATS Resume Analysis — ₹299+",
+        "Portfolio PDF — ₹299+",
+        "AI Portfolio Builder — ₹2,999+",
+        "Personal Portfolio Website — ₹4,999+",
+        "Developer Portfolio — ₹6,999+",
+      ],
+    },
+    {
+      icon: "language",
+      title: "Websites",
+      price: "₹4,999+",
+      description:
+        "Modern responsive websites for individuals, businesses and organizations.",
+      services: [
+        "Landing Page — ₹4,999+",
+        "Starter Website — ₹9,999+",
+        "Business Website — ₹19,999+",
+        "Advanced Website — ₹34,999+",
+        "Portfolio Website",
+        "Business Website",
+        "Institution / Organization Website",
+      ],
+    },
+    {
+      icon: "psychology",
+      title: "AI Solutions",
+      price: "₹4,999+",
+      description:
+        "AI-powered applications, assistants, automation and API integrations.",
+      services: [
+        "AI API Integration — ₹4,999+",
+        "AI Content Tool — ₹7,999+",
+        "AI Chatbot — ₹9,999+",
+        "Chat with PDF — ₹12,999+",
+        "AI Study Assistant — ₹9,999+",
+        "AI Document Processing — ₹14,999+",
+        "AI Automation — ₹19,999+",
+        "AI Recruitment Tool — ₹24,999+",
+        "Custom AI Application — ₹29,999+",
+      ],
+    },
+    {
+      icon: "code",
+      title: "Full-Stack Applications",
+      price: "₹39,999+",
+      description:
+        "Custom web applications built around your business or product requirements.",
+      services: [
+        "Custom Web Application — ₹39,999+",
+        "Advanced Application — ₹69,999+",
+        "Custom Digital Product — ₹99,999+",
+        "Authentication & Authorization",
+        "Database & REST API",
+        "Admin Dashboard",
+        "Third-Party Integrations",
+      ],
+    },
+    {
+      icon: "shopping_cart",
+      title: "E-Commerce & SaaS",
+      price: "₹24,999+",
+      description:
+        "Online stores, SaaS MVPs and scalable digital products.",
+      services: [
+        "E-Commerce Website — ₹24,999+",
+        "SaaS MVP — ₹49,999+",
+        "SaaS Product — ₹99,999+",
+        "Product & Order Management",
+        "Payment Integration",
+        "Admin Dashboard",
+        "User Management",
+      ],
+    },
+    {
+      icon: "business_center",
+      title: "Business Software",
+      price: "₹9,999+",
+      description:
+        "Custom software to simplify everyday business operations.",
+      services: [
+        "Quotation System — ₹9,999+",
+        "Invoice System — ₹9,999+",
+        "Reporting Dashboard — ₹14,999+",
+        "Booking System — ₹19,999+",
+        "CRM — ₹29,999+",
+        "Inventory System — ₹29,999+",
+        "Project Management — ₹29,999+",
+        "Employee Management — ₹29,999+",
+        "Custom Business Software — ₹39,999+",
+      ],
+    },
+    {
+      icon: "bolt",
+      title: "Automation",
+      price: "₹2,999+",
+      description:
+        "Automate repetitive workflows, notifications, documents and business processes.",
+      services: [
+        "Email Automation — ₹2,999+",
+        "Notification Automation — ₹2,999+",
+        "API Integration — ₹4,999+",
+        "Document Automation — ₹9,999+",
+        "AI Workflow — ₹14,999+",
+        "Business Process Automation — ₹19,999+",
+      ],
+    },
+    {
+      icon: "support_agent",
+      title: "Maintenance & Support",
+      price: "₹1,999/mo",
+      description:
+        "Keep your website or application updated and running smoothly.",
+      services: [
+        "Essential — ₹1,999/month",
+        "Professional — ₹3,999/month",
+        "Premium — ₹6,999/month",
+        "Bug Fixes",
+        "Content / Minor Updates",
+        "Performance Monitoring",
+        "Priority Support",
+      ],
+    },
+  ];
+
+  const pricingSteps = [
+    {
+      number: "01",
+      title: "Share Your Idea",
+      text: "Tell us what you want to build and what problem it should solve.",
+    },
+    {
+      number: "02",
+      title: "Define the Scope",
+      text: "We identify the important features, integrations and technical requirements.",
+    },
+    {
+      number: "03",
+      title: "Discuss Budget",
+      text: "Share your expected budget. We can adjust the project scope and pricing accordingly.",
+    },
+    {
+      number: "04",
+      title: "Get Your Quote",
+      text: "We provide a project-specific quotation with scope and payment milestones.",
+    },
+  ];
+
+  const handleContact = () => {
+    navigate("/contact");
+  };
+
   return (
-    <div className="min-h-screen bg-[#f3f4f6]">
+    <div className="min-h-screen bg-[#f7f8fc]">
       <Header />
 
       <main>
-        {/* Hero Section with Big Logo */}
-        <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32 px-4 sm:px-6">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-200/30 rounded-full blur-[120px]" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-200/30 rounded-full blur-[120px]" />
+        {/* =====================================================
+            HERO
+        ====================================================== */}
+        <section className="relative overflow-hidden px-4 sm:px-6 py-20 sm:py-24 lg:py-28">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-indigo-200/30 blur-[100px]" />
+            <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-blue-200/30 blur-[100px]" />
           </div>
 
-          <div className="relative z-10 max-w-[1440px] mx-auto text-center">
-            {/* Rounded Logo */}
-            <div className="flex justify-center mb-8">
-              <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden">
-                <img
-                  src={Logo}
-                  alt="VELSAKA TECH Logo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            <span className="text-xs sm:text-sm tracking-widest text-indigo-600 mb-3 sm:mb-4 block font-semibold">
+          <div className="relative max-w-5xl mx-auto text-center">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs sm:text-sm font-semibold tracking-widest mb-6">
               PRICING
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 sm:mb-6 font-['Space_Grotesk']">
-              Simple & Transparent Pricing
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight font-['Space_Grotesk']">
+              Digital Solutions for Every Budget
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto px-4">
-              Affordable plans for startups, businesses, and creators. Scale your cosmic vision with precision engineering.
+
+            <p className="max-w-3xl mx-auto mt-6 text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed">
+              From student tools and career solutions to websites, AI
+              applications, SaaS products and custom business software.
             </p>
-          </div>
-        </section>
 
-        {/* Pricing Cards */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {/* Basic Plan */}
-            <div className="glass-card p-6 lg:p-8 rounded-xl hover:shadow-[0_0_25px_rgba(99,102,241,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col border border-gray-200 bg-white/80 backdrop-blur-sm">
-              <div className="mb-6">
-                <span className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">Basic</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2 font-['Space_Grotesk']">
-                  ₹4,999<span className="text-lg font-normal text-gray-500">/mo</span>
-                </h2>
-              </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm text-gray-600">
+                Starting Prices
+              </span>
 
-              <ul className="space-y-3 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-gray-600">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
-                  Standard Performance
-                </li>
-                <li className="flex items-center gap-3 text-gray-600">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
-                  5 Project Capacity
-                </li>
-                <li className="flex items-center gap-3 text-gray-600">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
-                  Email Support
-                </li>
-                <li className="flex items-center gap-3 text-gray-400 opacity-60">
-                  <span className="material-symbols-outlined text-xl">cancel</span>
-                  Custom Domains
-                </li>
-              </ul>
+              <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm text-gray-600">
+                Custom Quotations
+              </span>
 
-              <button
-                onClick={() => navigate("/contact")}
-                className="w-full py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-white/80 hover:border-indigo-300 transition-all duration-300 font-medium"
-              >
-                Get Started
-              </button>
-            </div>
-
-            {/* Pro Plan (Most Popular) */}
-            <div className="glass-card p-6 lg:p-8 rounded-xl hover:shadow-[0_0_25px_rgba(99,102,241,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col border-2 border-indigo-400 bg-white/80 backdrop-blur-sm relative md:scale-105 z-10">
-              <div className="absolute top-0 right-0 bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-4 py-1 rounded-bl-xl text-xs font-semibold shadow-md shadow-indigo-500/30">
-                Most Popular
-              </div>
-
-              <div className="mb-6">
-                <span className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">Pro</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2 font-['Space_Grotesk']">
-                  ₹9,999<span className="text-lg font-normal text-gray-500">/mo</span>
-                </h2>
-              </div>
-
-              <ul className="space-y-3 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-gray-700">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                  Enhanced Throughput
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                  20 Project Capacity
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                  Priority Support (24h)
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                  Custom Domains
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                  Advanced Analytics
-                </li>
-              </ul>
-
-              <button
-                onClick={() => navigate("/contact")}
-                className="w-full py-2.5 bg-gradient-to-r from-[#6C63FF] to-[#3B82F6] text-white rounded-lg font-semibold hover:shadow-[0_0_25px_rgba(108,63,255,0.4)] transition-all duration-300"
-              >
-                Go Pro
-              </button>
-            </div>
-
-            {/* Premium Plan */}
-            <div className="glass-card p-6 lg:p-8 rounded-xl hover:shadow-[0_0_25px_rgba(99,102,241,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col border border-gray-200 bg-white/80 backdrop-blur-sm">
-              <div className="mb-6">
-                <span className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">Premium</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2 font-['Space_Grotesk']">
-                  ₹29,999+<span className="text-lg font-normal text-gray-500">/mo</span>
-                </h2>
-              </div>
-
-              <ul className="space-y-3 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-gray-600">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
-                  Unlimited Scale
-                </li>
-                <li className="flex items-center gap-3 text-gray-600">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
-                  Dedicated Infrastructure
-                </li>
-                <li className="flex items-center gap-3 text-gray-600">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
-                  White-glove Onboarding
-                </li>
-                <li className="flex items-center gap-3 text-gray-600">
-                  <span className="material-symbols-outlined text-indigo-500 text-xl">check_circle</span>
-                  SSO & Enterprise Security
-                </li>
-              </ul>
-
-              <button
-                onClick={() => navigate("/contact")}
-                className="w-full py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-white/80 hover:border-indigo-300 transition-all duration-300 font-medium"
-              >
-                Contact Enterprise
-              </button>
+              <span className="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm text-gray-600">
+                Negotiable Pricing
+              </span>
             </div>
           </div>
         </section>
 
-        {/* Add-ons Section */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-10 text-center font-['Space_Grotesk']">
-            Enhance Your Experience
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: "trending_up", title: "SEO Optimization", desc: "Boost your organic cosmic reach." },
-              { icon: "build", title: "Maintenance", desc: "24/7 system health checks." },
-              { icon: "cloud_done", title: "Hosting Setup", desc: "Zero-latency global deployment." },
-              { icon: "brush", title: "UI Redesign", desc: "Next-gen aesthetic overhaul." },
-            ].map((addon, idx) => (
-              <div key={idx} className="glass-card p-6 rounded-xl border border-gray-200 bg-white/80 backdrop-blur-sm hover:shadow-[0_0_20px_rgba(99,102,241,0.1)] transition-all duration-300">
-                <span className="material-symbols-outlined text-indigo-500 text-3xl mb-3">{addon.icon}</span>
-                <h4 className="text-lg font-bold text-gray-800 mb-1">{addon.title}</h4>
-                <p className="text-gray-600 text-sm">{addon.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* =====================================================
+            PRICING NOTE
+        ====================================================== */}
+        <section className="px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="rounded-2xl border border-indigo-100 bg-white p-6 sm:p-8 shadow-sm">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 font-['Space_Grotesk']">
+                    Flexible pricing for your requirements
+                  </h2>
 
-        {/* Comparison Table */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-[1440px] mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-10 font-['Space_Grotesk']">
-            Feature Comparison
-          </h3>
-          <div className="glass-card rounded-xl overflow-hidden border border-gray-200 bg-white/80 backdrop-blur-sm overflow-x-auto">
-            <table className="w-full text-left min-w-[640px]">
-              <thead>
-                <tr className="border-b border-gray-200 bg-gray-50/80">
-                  <th className="p-4 lg:p-6 font-semibold text-indigo-600">Feature</th>
-                  <th className="p-4 lg:p-6 font-semibold text-gray-800">Basic</th>
-                  <th className="p-4 lg:p-6 font-semibold text-gray-800">Pro</th>
-                  <th className="p-4 lg:p-6 font-semibold text-gray-800">Premium</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                <tr>
-                  <td className="p-4 lg:p-6 text-gray-700">API Requests / Day</td>
-                  <td className="p-4 lg:p-6 text-gray-500">10k</td>
-                  <td className="p-4 lg:p-6 text-gray-800 font-medium">100k</td>
-                  <td className="p-4 lg:p-6 text-indigo-600 font-bold">Unlimited</td>
-                </tr>
-                <tr>
-                  <td className="p-4 lg:p-6 text-gray-700">Storage Capacity</td>
-                  <td className="p-4 lg:p-6 text-gray-500">5GB</td>
-                  <td className="p-4 lg:p-6 text-gray-800 font-medium">50GB</td>
-                  <td className="p-4 lg:p-6 text-indigo-600 font-bold">1TB+</td>
-                </tr>
-                <tr>
-                  <td className="p-4 lg:p-6 text-gray-700">Collaborators</td>
-                  <td className="p-4 lg:p-6 text-gray-500">2</td>
-                  <td className="p-4 lg:p-6 text-gray-800 font-medium">10</td>
-                  <td className="p-4 lg:p-6 text-indigo-600 font-bold">Unlimited</td>
-                </tr>
-                <tr>
-                  <td className="p-4 lg:p-6 text-gray-700">Custom Reports</td>
-                  <td className="p-4 lg:p-6 text-gray-400">
-                    <span className="material-symbols-outlined text-xl opacity-50">close</span>
-                  </td>
-                  <td className="p-4 lg:p-6 text-indigo-500">
-                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
-                  </td>
-                  <td className="p-4 lg:p-6 text-indigo-500">
-                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="p-4 lg:p-6 text-gray-700">Dedicated IP</td>
-                  <td className="p-4 lg:p-6 text-gray-400">
-                    <span className="material-symbols-outlined text-xl opacity-50">close</span>
-                  </td>
-                  <td className="p-4 lg:p-6 text-gray-400">
-                    <span className="material-symbols-outlined text-xl opacity-50">close</span>
-                  </td>
-                  <td className="p-4 lg:p-6 text-indigo-500">
-                    <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-3xl mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-10 text-center font-['Space_Grotesk']">
-            Frequently Asked Questions
-          </h3>
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <details
-                key={idx}
-                className="glass-card rounded-xl border border-gray-200 bg-white/80 backdrop-blur-sm overflow-hidden"
-                open={idx === openFaq}
-                onClick={() => setOpenFaq(idx === openFaq ? -1 : idx)}
-              >
-                <summary className="flex justify-between items-center p-4 lg:p-6 cursor-pointer list-none">
-                  <span className="font-medium text-gray-800">{faq.question}</span>
-                  <span className="material-symbols-outlined text-gray-500 transition-transform group-open:rotate-180">
-                    expand_more
-                  </span>
-                </summary>
-                <div className="px-4 lg:px-6 pb-4 lg:pb-6 text-gray-600 text-sm md:text-base">
-                  {faq.answer}
+                  <p className="mt-2 text-gray-600 text-sm sm:text-base max-w-3xl leading-relaxed">
+                    All prices shown below are starting prices. Final pricing
+                    can be negotiated based on your requirements, features,
+                    complexity, integrations, timeline and budget.
+                  </p>
                 </div>
-              </details>
-            ))}
+
+                <button
+                  onClick={handleContact}
+                  className="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition"
+                >
+                  Discuss Your Budget
+                  <span className="material-symbols-outlined text-lg">
+                    arrow_forward
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="relative overflow-hidden py-16 sm:py-24 px-4 sm:px-6">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-indigo-200/30 rounded-full blur-[120px]" />
+        {/* =====================================================
+            SERVICES
+        ====================================================== */}
+        <section className="px-4 sm:px-6 py-16 sm:py-20">
+          <div className="max-w-[1440px] mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs font-semibold tracking-widest text-indigo-600">
+                OUR SERVICES
+              </span>
+
+              <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-['Space_Grotesk']">
+                Choose a Starting Point
+              </h2>
+
+              <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                Choose the service that matches your requirement. If you have
+                a different budget or scope, contact us and we can discuss it.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+              {pricingCategories.map((category) => (
+                <div
+                  key={category.title}
+                  className="group bg-white rounded-2xl border border-gray-200 p-6 sm:p-7 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/40 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center">
+                      <span className="material-symbols-outlined text-indigo-600 text-2xl">
+                        {category.icon}
+                      </span>
+                    </div>
+
+                    <div className="text-right">
+                      <p className="text-xs text-gray-500">
+                        Starting from
+                      </p>
+
+                      <p className="text-lg font-bold text-indigo-600">
+                        {category.price}
+                      </p>
+                    </div>
+                  </div>
+
+                  <h3 className="mt-5 text-xl font-bold text-gray-900">
+                    {category.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                    {category.description}
+                  </p>
+
+                  <div className="mt-5 pt-5 border-t border-gray-100 flex-grow">
+                    <ul className="space-y-2.5">
+                      {category.services.map((service, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-2.5 text-sm text-gray-600"
+                        >
+                          <span
+                            className="material-symbols-outlined text-indigo-500 text-base mt-0.5 shrink-0"
+                            style={{
+                              fontVariationSettings: "'FILL' 1",
+                            }}
+                          >
+                            check_circle
+                          </span>
+
+                          <span>{service}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <button
+                    onClick={handleContact}
+                    className="mt-6 w-full py-2.5 rounded-xl border border-gray-200 text-gray-700 font-semibold hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/50 transition"
+                  >
+                    Discuss This Service
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="relative z-10 max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 font-['Space_Grotesk']">
-              Not sure which plan fits your project?
-            </h3>
-            <p className="text-gray-600 mb-8 text-base sm:text-lg max-w-xl mx-auto">
-              Our consultants are ready to help you map out the perfect infrastructure for your unique cosmic scale needs.
+        </section>
+
+        {/* =====================================================
+            NEGOTIABLE PRICING
+        ====================================================== */}
+        <section className="px-4 sm:px-6 py-16 sm:py-20 bg-white border-y border-gray-100">
+          <div className="max-w-5xl mx-auto">
+            <div className="rounded-3xl bg-gradient-to-br from-indigo-600 to-blue-600 p-8 sm:p-12 text-white text-center shadow-xl shadow-indigo-200">
+              <span className="material-symbols-outlined text-4xl mb-4">
+                handshake
+              </span>
+
+              <h2 className="text-3xl sm:text-4xl font-bold font-['Space_Grotesk']">
+                Pricing Is Negotiable
+              </h2>
+
+              <p className="max-w-2xl mx-auto mt-4 text-indigo-100 leading-relaxed">
+                Have a specific budget in mind? Share your requirements and
+                budget range with us. We can discuss the scope, prioritize the
+                important features and provide a suitable quotation.
+              </p>
+
+              <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+                <button
+                  onClick={handleContact}
+                  className="px-7 py-3 rounded-xl bg-white text-indigo-600 font-bold hover:bg-gray-50 transition"
+                >
+                  Request a Quote
+                </button>
+
+                <button
+                  onClick={handleContact}
+                  className="px-7 py-3 rounded-xl border border-white/30 text-white font-semibold hover:bg-white/10 transition"
+                >
+                  Discuss Your Budget
+                </button>
+              </div>
+
+              <p className="mt-5 text-xs text-indigo-100">
+                Final pricing depends on requirements, complexity,
+                integrations, timeline and deployment needs.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            HOW PRICING WORKS
+        ====================================================== */}
+        <section className="px-4 sm:px-6 py-16 sm:py-20">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-xs font-semibold tracking-widest text-indigo-600">
+                SIMPLE PROCESS
+              </span>
+
+              <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-['Space_Grotesk']">
+                How We Finalize Your Price
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {pricingSteps.map((step) => (
+                <div
+                  key={step.number}
+                  className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-indigo-200 hover:shadow-lg transition"
+                >
+                  <span className="inline-flex w-10 h-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 text-sm font-bold">
+                    {step.number}
+                  </span>
+
+                  <h3 className="mt-5 text-lg font-bold text-gray-900">
+                    {step.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                    {step.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            PAYMENT
+        ====================================================== */}
+        <section className="px-4 sm:px-6 py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-5xl mx-auto text-center">
+            <span className="text-xs font-semibold tracking-widest text-indigo-600">
+              PAYMENT
+            </span>
+
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-['Space_Grotesk']">
+              Flexible Payment Structure
+            </h2>
+
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+              Payment schedules can be discussed according to the project size
+              and development milestones.
             </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-10">
+              {[
+                {
+                  title: "Project Start",
+                  value: "Advance",
+                  icon: "play_circle",
+                },
+                {
+                  title: "Development",
+                  value: "Milestone",
+                  icon: "construction",
+                },
+                {
+                  title: "Delivery",
+                  value: "Final Payment",
+                  icon: "task_alt",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="bg-white rounded-2xl border border-gray-200 p-6"
+                >
+                  <span className="material-symbols-outlined text-indigo-600 text-3xl">
+                    {item.icon}
+                  </span>
+
+                  <h3 className="mt-4 font-bold text-gray-900">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-1 text-indigo-600 font-semibold">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            FAQ
+        ====================================================== */}
+        <section className="px-4 sm:px-6 py-16 sm:py-20">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="text-xs font-semibold tracking-widest text-indigo-600">
+                FAQ
+              </span>
+
+              <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-['Space_Grotesk']">
+                Frequently Asked Questions
+              </h2>
+            </div>
+
+            <div className="space-y-3">
+              {faqs.map((faq, idx) => {
+                const isOpen = idx === openFaq;
+
+                return (
+                  <div
+                    key={idx}
+                    className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
+                  >
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setOpenFaq(isOpen ? -1 : idx)
+                      }
+                      className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left"
+                    >
+                      <span className="font-semibold text-gray-900">
+                        {faq.question}
+                      </span>
+
+                      <span
+                        className={`material-symbols-outlined text-gray-500 transition-transform duration-300 shrink-0 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      >
+                        expand_more
+                      </span>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-sm sm:text-base text-gray-600 leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            FINAL CTA
+        ====================================================== */}
+        <section className="px-4 sm:px-6 py-20 sm:py-28">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="material-symbols-outlined text-indigo-600 text-4xl">
+              lightbulb
+            </span>
+
+            <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 font-['Space_Grotesk']">
+              Have an Idea?
+            </h2>
+
+            <p className="mt-5 text-gray-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              You don't need to know exactly what you need. Tell us your idea,
+              requirements and budget. We'll help you find the right scope and
+              provide a negotiable project quotation.
+            </p>
+
             <button
-              onClick={() => navigate("/contact")}
-              className="bg-gradient-to-r from-[#6C63FF] to-[#3B82F6] text-white px-8 sm:px-10 py-3 rounded-full font-semibold hover:shadow-[0_0_30px_rgba(108,63,255,0.4)] transition-all duration-300 active:scale-95 inline-flex items-center gap-2"
+              onClick={handleContact}
+              className="mt-8 inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#6C63FF] to-[#3B82F6] text-white font-semibold hover:shadow-lg hover:shadow-indigo-200 transition-all"
             >
-              Contact Us
-              <span className="material-symbols-outlined text-xl">arrow_forward</span>
+              Get a Custom Quote
+
+              <span className="material-symbols-outlined text-xl">
+                arrow_forward
+              </span>
             </button>
+
+            <p className="mt-4 text-sm text-gray-500">
+              No fixed package required • Custom scope • Negotiable pricing
+            </p>
           </div>
         </section>
       </main>

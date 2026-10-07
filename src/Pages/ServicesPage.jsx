@@ -7,11 +7,11 @@ const services = [
   {
     icon: "school",
     number: "01",
-    title: "Student Productivity Tools",
+    title: "Student Productivity",
     description:
       "AI-assisted academic tools to help students prepare presentations, assignments, study materials, and reports.",
     points: [
-      "AI PPT and PowerPoint generation",
+      "PPT and PowerPoint generation",
       "Seminar and project presentations",
       "Assignment and report generation",
       "Notes and study material summarization",
@@ -57,7 +57,7 @@ const services = [
   {
     icon: "description",
     number: "04",
-    title: "College Project Documentation",
+    title: "College Projects & Documentation",
     description:
       "Academic project planning, documentation, and development assistance from initial idea to final presentation.",
     points: [
