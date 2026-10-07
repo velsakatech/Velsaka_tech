@@ -55,8 +55,7 @@ import {
 // =========================================================
 
 const ADMIN_EMAIL = (
-  import.meta.env.VITE_ADMIN_EMAIL ||
-  "velsaka-tech@gmail.com"
+  import.meta.env.VITE_ADMIN_EMAIL || "velsaka-tech@gmail.com"
 )
   .trim()
   .toLowerCase();
@@ -83,7 +82,6 @@ const convertToCSV = (data, headers) => {
           value = new Date(value).toLocaleString("en-US");
         }
 
-        // Escape quotes and wrap in quotes
         value = String(value).replace(/"/g, '""');
 
         return `"${value}"`;
@@ -1108,10 +1106,7 @@ export default function AdminPage() {
         ];
 
         const csvContent = convertToCSV(filteredMessages, headers);
-        downloadCSV(
-          csvContent,
-          `contact-messages-${timestamp}.csv`
-        );
+        downloadCSV(csvContent, `contact-messages-${timestamp}.csv`);
       } else {
         if (filteredWaitlist.length === 0) {
           Swal.fire({
@@ -1128,10 +1123,7 @@ export default function AdminPage() {
         ];
 
         const csvContent = convertToCSV(filteredWaitlist, headers);
-        downloadCSV(
-          csvContent,
-          `waitlist-subscribers-${timestamp}.csv`
-        );
+        downloadCSV(csvContent, `waitlist-subscribers-${timestamp}.csv`);
       }
 
       await Swal.fire({
@@ -1401,9 +1393,7 @@ export default function AdminPage() {
                   ) : (
                     <Download className="w-4 h-4" />
                   )}
-                  <span>
-                    {exporting ? "Exporting..." : "Export CSV"}
-                  </span>
+                  <span>{exporting ? "Exporting..." : "Export CSV"}</span>
                 </button>
 
                 <button
