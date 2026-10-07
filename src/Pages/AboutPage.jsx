@@ -94,7 +94,7 @@ const About = () => {
   const team = [
     {
       name: "Abishek Sathiyan",
-      role: "Founder, Chief Architect, Designer & Developer",
+      role: "Founder, Chief Architect, Designer & Developer, Software Developer in Innovation City , Government of Ras Al Khaima",
       img: FounderImg,
       active: true,
     },

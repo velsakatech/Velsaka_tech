@@ -300,7 +300,7 @@ const ProductsPage = () => {
       icon: "description",
       name: "AI Resume Builder",
       description: "Create ATS-friendly resumes with AI-powered suggestions.",
-      badge: "Under Research",
+      badge: "Under Development",
       badgeColor: "indigo",
       fullDescription:
         "Our AI Resume Builder uses advanced natural language processing to analyze job descriptions and optimize your resume for Applicant Tracking Systems. Features include:",

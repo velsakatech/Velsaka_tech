@@ -309,7 +309,9 @@ const ContactPage = () => {
               onClick={closeAlert}
             />
             <div className="fixed inset-0 z-[101] flex items-center justify-center p-4">
-              <div className={`max-w-md w-full ${alert.show ? "animate-bounce-in" : ""}`}>
+              <div
+                className={`max-w-md w-full ${alert.show ? "animate-bounce-in" : ""}`}
+              >
                 {alert.type === "success" && (
                   <div className="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl p-8 text-center shadow-2xl border-2 border-green-300 text-white">
                     <div className="mb-4">
@@ -461,9 +463,25 @@ const ContactPage = () => {
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Sending...
                   </span>
@@ -508,10 +526,15 @@ const ContactPage = () => {
                   onClick={openEmail}
                 >
                   <div className="w-10 h-10 flex items-center justify-center bg-indigo-50 rounded-lg border border-indigo-200 group-hover:bg-indigo-100 transition-all">
-                    <EmailIcon className="text-indigo-600" style={{ fontSize: "20px" }} />
+                    <EmailIcon
+                      className="text-indigo-600"
+                      style={{ fontSize: "20px" }}
+                    />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</p>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                      Email
+                    </p>
                     <p className="text-gray-900 font-medium group-hover:text-indigo-600 transition-colors text-sm">
                       velsakatech@gmail.com
                     </p>
@@ -523,10 +546,15 @@ const ContactPage = () => {
                   onClick={openWhatsApp}
                 >
                   <div className="w-10 h-10 flex items-center justify-center bg-indigo-50 rounded-lg border border-indigo-200 group-hover:bg-indigo-100 transition-all">
-                    <PhoneIcon className="text-indigo-600" style={{ fontSize: "20px" }} />
+                    <PhoneIcon
+                      className="text-indigo-600"
+                      style={{ fontSize: "20px" }}
+                    />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone / WhatsApp</p>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                      Phone / WhatsApp
+                    </p>
                     <p className="text-gray-900 font-medium group-hover:text-indigo-600 transition-colors text-sm">
                       +91 70920 85864
                     </p>
@@ -538,10 +566,15 @@ const ContactPage = () => {
                   onClick={openMap}
                 >
                   <div className="w-10 h-10 flex items-center justify-center bg-indigo-50 rounded-lg border border-indigo-200 group-hover:bg-indigo-100 transition-all">
-                    <LocationOnIcon className="text-indigo-600" style={{ fontSize: "20px" }} />
+                    <LocationOnIcon
+                      className="text-indigo-600"
+                      style={{ fontSize: "20px" }}
+                    />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Location</p>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                      Location
+                    </p>
                     <p className="text-gray-900 font-medium group-hover:text-indigo-600 transition-colors text-sm">
                       Methalodai, Ramanathapuram, Tamil Nadu, India
                     </p>
@@ -554,22 +587,70 @@ const ContactPage = () => {
                   Follow Us
                 </p>
                 <div className="flex gap-3 flex-wrap">
-                  {[
-                    { icon: LinkedInIcon, onClick: openLinkedIn, label: "LinkedIn" },
-                    { icon: GitHubIcon, onClick: openGitHub, label: "GitHub" },
-                    { icon: WhatsAppIcon, onClick: openWhatsApp, label: "WhatsApp" },
-                    { icon: InstagramIcon, onClick: () => window.open("https://www.instagram.com/velsakatech/", "_blank"), label: "Instagram" },
-                    { icon: EmailIcon, onClick: openEmail, label: "Email" },
-                  ].map((item, idx) => (
-                    <button
-                      key={idx}
-                      onClick={item.onClick}
-                      className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:text-indigo-600 hover:border-indigo-300 hover:shadow-md transition-all cursor-pointer group"
-                      aria-label={item.label}
-                    >
-                      <item.icon className="text-gray-500 group-hover:text-indigo-600 transition-colors" style={{ fontSize: "20px" }} />
-                    </button>
-                  ))}
+                  {/* LinkedIn - Blue */}
+                  <button
+                    onClick={openLinkedIn}
+                    className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:border-blue-400 hover:shadow-[0_0_12px_rgba(10,102,194,0.2)] transition-all cursor-pointer group"
+                    aria-label="LinkedIn"
+                  >
+                    <LinkedInIcon
+                      className="text-gray-500 group-hover:text-[#0A66C2] transition-colors"
+                      style={{ fontSize: "20px" }}
+                    />
+                  </button>
+
+                  {/* GitHub - Black */}
+                  <button
+                    onClick={openGitHub}
+                    className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:border-gray-800 hover:shadow-[0_0_12px_rgba(0,0,0,0.15)] transition-all cursor-pointer group"
+                    aria-label="GitHub"
+                  >
+                    <GitHubIcon
+                      className="text-gray-500 group-hover:text-gray-900 transition-colors"
+                      style={{ fontSize: "20px" }}
+                    />
+                  </button>
+
+                  {/* WhatsApp - Green */}
+                  <button
+                    onClick={openWhatsApp}
+                    className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:border-green-400 hover:shadow-[0_0_12px_rgba(37,211,102,0.2)] transition-all cursor-pointer group"
+                    aria-label="WhatsApp"
+                  >
+                    <WhatsAppIcon
+                      className="text-gray-500 group-hover:text-green-500 transition-colors"
+                      style={{ fontSize: "20px" }}
+                    />
+                  </button>
+
+                  {/* Instagram - Red */}
+                  <button
+                    onClick={() =>
+                      window.open(
+                        "https://www.instagram.com/velsakatech/",
+                        "_blank",
+                      )
+                    }
+                    className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:border-red-400 hover:shadow-[0_0_12px_rgba(220,38,38,0.2)] transition-all cursor-pointer group"
+                    aria-label="Instagram"
+                  >
+                    <InstagramIcon
+                      className="text-gray-500 group-hover:text-red-600 transition-colors"
+                      style={{ fontSize: "20px" }}
+                    />
+                  </button>
+
+                  {/* Email - Red */}
+                  <button
+                    onClick={openEmail}
+                    className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:border-red-400 hover:shadow-[0_0_12px_rgba(220,38,38,0.2)] transition-all cursor-pointer group"
+                    aria-label="Email"
+                  >
+                    <EmailIcon
+                      className="text-gray-500 group-hover:text-red-600 transition-colors"
+                      style={{ fontSize: "20px" }}
+                    />
+                  </button>
                 </div>
               </div>
             </div>
