@@ -153,8 +153,7 @@ const ContactPage = () => {
         showAlert(
           "success",
           "Message Sent Successfully",
-          data.message ||
-            "Thank you for reaching out! Our team will contact you within 24 hours.",
+          "Thank you for reaching out! Our team will contact you shortly.",
         );
         resetForm();
       } else {
