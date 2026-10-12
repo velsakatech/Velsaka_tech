@@ -6,12 +6,12 @@ import { auth } from "../firebase";
 // CONFIG
 // =========================================================
 
-const RAW_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const RAW_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Remove trailing slashes only
 const BASE_URL = RAW_BASE_URL.replace(/\/+$/, "");
 
+console.log("🌐 API BASE URL:", BASE_URL);
 console.log("🌐 API BASE URL:", BASE_URL);
 
 // =========================================================
@@ -94,7 +94,7 @@ export const api = async (path, options = {}) => {
 
     if (error.message === "Failed to fetch") {
       throw new Error(
-        `Cannot connect to server. Please check backend: ${BASE_URL}`
+        `Cannot connect to server. Please check backend: ${BASE_URL}`,
       );
     }
 
