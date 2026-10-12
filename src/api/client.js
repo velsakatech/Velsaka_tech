@@ -12,7 +12,6 @@ const RAW_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const BASE_URL = RAW_BASE_URL.replace(/\/+$/, "");
 
 console.log("🌐 API BASE URL:", BASE_URL);
-console.log("🌐 API BASE URL:", BASE_URL);
 
 // =========================================================
 // API CLIENT
