@@ -1,4 +1,3 @@
-// src/api/client.js
 
 import { auth } from "../firebase";
 
@@ -8,8 +7,14 @@ import { auth } from "../firebase";
 
 const RAW_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-// Remove trailing slashes only
-const BASE_URL = RAW_BASE_URL.replace(/\/+$/, "");
+if (!RAW_BASE_URL || !RAW_BASE_URL.trim()) {
+  throw new Error(
+    "VITE_API_BASE_URL is missing. Add it in your deployment environment variables."
+  );
+}
+
+// Remove trailing slashes
+const BASE_URL = RAW_BASE_URL.trim().replace(/\/+$/, "");
 
 console.log("🌐 API BASE URL:", BASE_URL);
 
@@ -18,10 +23,14 @@ console.log("🌐 API BASE URL:", BASE_URL);
 // =========================================================
 
 export const api = async (path, options = {}) => {
-  // Normalize: ensure leading slash
+  if (typeof path !== "string" || !path.trim()) {
+    throw new Error("API path must be a non-empty string.");
+  }
+
+  // Ensure leading slash
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
-  // Caller passes full path including /api
+  // Caller passes the full path, including /api
   const url = `${BASE_URL}${normalizedPath}`;
 
   console.log("➡️ API Request:", url);
@@ -39,6 +48,7 @@ export const api = async (path, options = {}) => {
       console.log("🔐 Firebase ID token available");
     } catch (error) {
       console.error("❌ Firebase token error:", error);
+      throw new Error("Unable to retrieve your authentication token.");
     }
   }
 
@@ -49,11 +59,13 @@ export const api = async (path, options = {}) => {
   const headers = {
     ...(options.body ? { "Content-Type": "application/json" } : {}),
     ...(options.headers || {}),
-    ...(firebaseToken ? { Authorization: `Bearer ${firebaseToken}` } : {}),
+    ...(firebaseToken
+      ? { Authorization: `Bearer ${firebaseToken}` }
+      : {}),
   };
 
   // =======================================================
-  // FETCH
+  // FETCH & ERROR HANDLING
   // =======================================================
 
   try {
@@ -68,11 +80,16 @@ export const api = async (path, options = {}) => {
     if (contentType.includes("application/json")) {
       data = await response.json();
     } else {
-      const text = await response.text();
-      console.error("❌ Non-JSON API response:", text.substring(0, 500));
+      const responseText = await response.text();
+
+      console.error(
+        "❌ Non-JSON API response:",
+        responseText.substring(0, 500)
+      );
+
       data = {
         success: false,
-        message: text || `HTTP ${response.status}`,
+        message: responseText || `HTTP ${response.status}`,
       };
     }
 
@@ -80,7 +97,10 @@ export const api = async (path, options = {}) => {
       if (response.status === 401) {
         console.error("❌ API Unauthorized");
       }
-      throw new Error(data?.message || `HTTP ${response.status}`);
+
+      throw new Error(
+        data?.message || `Request failed with status ${response.status}`
+      );
     }
 
     return data;
@@ -91,9 +111,9 @@ export const api = async (path, options = {}) => {
       message: error.message,
     });
 
-    if (error.message === "Failed to fetch") {
+    if (error instanceof TypeError && error.message === "Failed to fetch") {
       throw new Error(
-        `Cannot connect to server. Please check backend: ${BASE_URL}`,
+        `Cannot connect to the server. Check your backend URL and server status: ${BASE_URL}`
       );
     }
 
