@@ -5,11 +5,11 @@ import { auth } from "../firebase";
 // CONFIG
 // =========================================================
 
-const RAW_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const RAW_BASE_URL = import.meta.env.VITE_API_URL;
 
 if (!RAW_BASE_URL || !RAW_BASE_URL.trim()) {
   throw new Error(
-    "VITE_API_BASE_URL is missing. Add it in your deployment environment variables."
+    "VITE_API_URL is missing. Add it in your deployment environment variables."
   );
 }
 
